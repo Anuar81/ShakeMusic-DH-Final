@@ -1,7 +1,9 @@
-package digitalhouse.android.a0317moacns1c_03;
+package digitalhouse.android.a0317moacns1c_03.View;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import digitalhouse.android.a0317moacns1c_03.R;
 
 public class MainActivity extends AppCompatActivity {
 
