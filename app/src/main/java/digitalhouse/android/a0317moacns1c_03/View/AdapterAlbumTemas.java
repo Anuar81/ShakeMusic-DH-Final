@@ -17,12 +17,12 @@ import java.util.List;
  * Created by dh3 on 19/06/17.
  */
 
-public class AdapterTemas extends RecyclerView.Adapter{
+public class AdapterAlbumTemas extends RecyclerView.Adapter{
 
     private Context context;
     private List<Tema> temaList;
 
-    public AdapterTemas(Context context) {
+    public AdapterAlbumTemas(Context context) {
         this.context = context;
         temaList = new ArrayList<>();
     }
