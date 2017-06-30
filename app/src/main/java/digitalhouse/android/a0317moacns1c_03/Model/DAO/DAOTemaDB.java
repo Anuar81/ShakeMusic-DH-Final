@@ -43,8 +43,6 @@ public class DAOTemaDB extends DatabaseHelper {
             database.insert(TABLE_HISTORY, null, row);
 
             database.close();
-
-
         }
     }
 
@@ -78,14 +76,33 @@ public class DAOTemaDB extends DatabaseHelper {
         database.close();
 
         return temas;
-
     }
 
     public Tema getTema (Integer id){
-        return null;
+        SQLiteDatabase database = getReadableDatabase();
+
+        String query = "SELECT * FROM" + TABLE_HISTORY +
+                        "WHERE" + ID + "=" + id;
+
+        Cursor cursor = database.rawQuery(query, null);
+        Tema tema = null;
+        if (cursor.moveToNext()) {
+
+            tema = new Tema();
+            tema.setId(cursor.getInt(cursor.getColumnIndex(ID)));
+            tema.setName(cursor.getString(cursor.getColumnIndex(NAME)));
+            tema.setLink(cursor.getString(cursor.getColumnIndex(LINK)));
+            tema.setDuration(cursor.getInt(cursor.getColumnIndex(DURATION)));
+            tema.setTrackPosition(cursor.getInt(cursor.getColumnIndex(TRACK_POSITION)));
+            tema.setDiskNumber(cursor.getInt(cursor.getColumnIndex(DISK_NUMBER)));
+
+
+        }
+            cursor.close();
+            database.close();
+
+            return tema;
     }
-
-
 
     public Boolean checkIfExist(Integer id){
         Tema tema = getTema(id);
