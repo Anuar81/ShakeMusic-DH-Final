@@ -4,14 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
-
-import java.util.List;
 
 import digitalhouse.android.a0317moacns1c_03.Controller.AlbumController;
-import digitalhouse.android.a0317moacns1c_03.Controller.ControllerArtista;
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Album;
-import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Tema;
 import digitalhouse.android.a0317moacns1c_03.R;
 import digitalhouse.android.a0317moacns1c_03.utils.ResultListener;
 
@@ -39,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
 
             RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-            final AdapterTemas adapterTemas = new AdapterTemas(this);
-            recyclerView.setAdapter(adapterTemas);
+            final AdapterAlbumTemas adapterAlbumTemas = new AdapterAlbumTemas(this);
+            recyclerView.setAdapter(adapterAlbumTemas);
             recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
 
@@ -51,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
                 public void finish(Album album) {
 
                     //RECIBO EL RESULTADO DE LA LISTA, SE LA PASO AL ADAPTER PARA QUE LA CARGUE Y LE AVISO QUE SE MODIFICARON SUS DATOS
-                    adapterTemas.setTemaList(album.getContainerAlbumTema().getTemaList());
-                    adapterTemas.notifyDataSetChanged();
+                    adapterAlbumTemas.setTemaList(album.getContainerAlbumTema().getTemaList());
+                    adapterAlbumTemas.notifyDataSetChanged();
 
                 }
             });
