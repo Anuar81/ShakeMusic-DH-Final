@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Album;
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Artista;
+import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Tema;
 
 
 /**
@@ -17,7 +19,9 @@ import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Artista;
  */
 public class FragmentPrincipal extends Fragment {
 
-    
+    private List<Artista>listaDeArtistas;
+    private List<Album>listaDeAlbums;
+    private List<Tema>listaDeTemas;
 
     public FragmentPrincipal() {
         // Required empty public constructor
