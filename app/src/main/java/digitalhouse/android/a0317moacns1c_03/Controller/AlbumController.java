@@ -38,9 +38,9 @@ public class AlbumController {
 
  /*                   //EL RESULTADO DE LA LISTA DE TRACKS SE GUARDA EN LA BASE DE DATOS
                     DAOAlbumDataBase daoAlbumDataBase = new DAOAlbumDataBase(context);
-                    daoAlbumDataBase.addAlbum(album);
+                    daoAlbumDataBase.addAlbum(album);*/
 
-                    resultListenerFromView.finish(album);*/
+                    resultListenerFromView.finish(album);
                 }
             });
         }
