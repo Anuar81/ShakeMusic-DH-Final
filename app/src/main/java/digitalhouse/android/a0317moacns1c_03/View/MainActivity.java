@@ -3,6 +3,8 @@ package digitalhouse.android.a0317moacns1c_03.View;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import digitalhouse.android.a0317moacns1c_03.Controller.AlbumController;
+import digitalhouse.android.a0317moacns1c_03.FragmentPrincipal;
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Album;
 import digitalhouse.android.a0317moacns1c_03.R;
 import digitalhouse.android.a0317moacns1c_03.utils.ResultListener;
@@ -26,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        cargarFragmentPrincipal();
         /* codigo de prueba de Abel
         ControllerArtista artista = new ControllerArtista(this);
         artista.traerTemasDeArtista(new ResultListener<List<Tema>>() {
@@ -83,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
 */
 
 
+
+
         }
     private void handleShakeEvent(int count){
         Toast.makeText(this, "SE SHEIKEO"+count, Toast.LENGTH_SHORT).show();
@@ -102,6 +107,26 @@ public class MainActivity extends AppCompatActivity {
         mSensorManager.unregisterListener(mShakeDetector);
         super.onPause();
     }
+
+    public void cargarFragmentPrincipal() {
+        //Creo un Fragment Manager que me permite hacer cosas con los fragments
+        FragmentManager unFragmentManager = getSupportFragmentManager();
+
+        //creo FragmentTransaction que me permite poner un fragment en un activity
+        FragmentTransaction fragmentTransaction = unFragmentManager.beginTransaction();
+
+        //Acá creo una instancia del nuevo fragment
+        FragmentPrincipal fragmentPrincipal = new FragmentPrincipal();
+
+        Bundle unBundle = new Bundle();
+        fragmentPrincipal.setArguments(unBundle);
+
+        fragmentTransaction.replace(R.id.contenedorDelFragmentActivityMain, fragmentPrincipal);
+
+        fragmentTransaction.commit();
+
+    }
+
 
     }
 
