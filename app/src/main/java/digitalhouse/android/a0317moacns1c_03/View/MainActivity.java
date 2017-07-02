@@ -28,8 +28,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        cargarFragmentPrincipal();
+        setContentView(R.layout.detalle_album);
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        final AdapterAlbumTemas adapterAlbumTemas = new AdapterAlbumTemas(this);
+        recyclerView.setAdapter(adapterAlbumTemas);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+
+        //SOLICITO LA LISTA AL CONTROLLER (A LA VISTA NO LE IMPORTA DE DONDE TRAE ESA LISTA EL CONTROLLER
+        AlbumController albumController = new AlbumController(this);
+        albumController.obtenerAlbum(new ResultListener<Album>() {
+            @Override
+            public void finish(Album album) {
+
+                //RECIBO EL RESULTADO DE LA LISTA, SE LA PASO AL ADAPTER PARA QUE LA CARGUE Y LE AVISO QUE SE MODIFICARON SUS DATOS
+                adapterAlbumTemas.setTemaList(album.getContainerAlbumTema().getTemaList());
+                adapterAlbumTemas.notifyDataSetChanged();
+
+            }
+        });
+
         /* codigo de prueba de Abel
         ControllerArtista artista = new ControllerArtista(this);
         artista.traerTemasDeArtista(new ResultListener<List<Tema>>() {
@@ -61,34 +80,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-
-/*
-
-            RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-            final AdapterAlbumTemas adapterAlbumTemas = new AdapterAlbumTemas(this);
-            recyclerView.setAdapter(adapterAlbumTemas);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-
-
-            //SOLICITO LA LISTA AL CONTROLLER (A LA VISTA NO LE IMPORTA DE DONDE TRAE ESA LISTA EL CONTROLLER
-            AlbumController albumController = new AlbumController(this);
-            albumController.obtenerAlbum(new ResultListener<Album>() {
-                @Override
-                public void finish(Album album) {
-
-                    //RECIBO EL RESULTADO DE LA LISTA, SE LA PASO AL ADAPTER PARA QUE LA CARGUE Y LE AVISO QUE SE MODIFICARON SUS DATOS
-                    adapterAlbumTemas.setTemaList(album.getContainerAlbumTema().getTemaList());
-                    adapterAlbumTemas.notifyDataSetChanged();
-
-                }
-            });
-*/
-
-
-
-
         }
+
+
     private void handleShakeEvent(int count){
         Toast.makeText(this, "SE SHEIKEO"+count, Toast.LENGTH_SHORT).show();
 
