@@ -64,12 +64,12 @@ public class FragmentPrincipal extends Fragment {
          controllerChartsInternet.traerChartsDeAlbumes(new ResultListener<List<Album>>() {
             @Override
             public void finish(List<Album> albumList) {
-
+                recyclerViewAlbums.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
+                adapterChartsAlbum = new AdapterChartsAlbum(getContext(),albumList);
+                recyclerViewAlbums.setAdapter(adapterChartsAlbum);
             }
         });
-        recyclerViewAlbums.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
-        adapterChartsAlbum = new AdapterChartsAlbum(getContext(),listaDeAlbums);
-        recyclerViewAlbums.setAdapter(adapterChartsAlbum);
+
 
     }
 
@@ -78,12 +78,12 @@ public class FragmentPrincipal extends Fragment {
         controllerChartsInternet.traerChartsDeArtistas(new ResultListener<List<Artista>>() {
             @Override
             public void finish(List<Artista> artistaList) {
-
+                recyclerViewArtistas.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
+                adapterChartsArtista= new AdapterChartsArtista(getContext(),artistaList);
+                recyclerViewArtistas.setAdapter(adapterChartsArtista);
             }
         });
-        recyclerViewArtistas.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
-         adapterChartsArtista= new AdapterChartsArtista(getContext(),listaDeArtistas);
-        recyclerViewArtistas.setAdapter(adapterChartsArtista);
+
 
     }
 
@@ -92,12 +92,12 @@ public class FragmentPrincipal extends Fragment {
         controllerChartsInternet.traerChartsDeTemas(new ResultListener<List<Tema>>() {
             @Override
             public void finish(List<Tema> temaList) {
-
+                recyclerViewTemas.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
+                adapterChartsTema= new AdapterChartsTema(getContext(),temaList);
+                recyclerViewTemas.setAdapter(adapterChartsTema);
             }
         });
-        recyclerViewTemas.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
-        adapterChartsTema= new AdapterChartsTema(getContext(),listaDeTemas);
-        recyclerViewTemas.setAdapter(adapterChartsTema);
+
     }
 
 }

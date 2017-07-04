@@ -22,9 +22,9 @@ public class Album {
     private String id;
 
 
- /*   private String cover;
+     private String cover;
 
-    private String share;*/
+ //   private String share;*/
 
     private String title;
 
@@ -113,6 +113,14 @@ public class Album {
     {
         this.nb_tracks = nb_tracks;
     }*/
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
+    }
 
     public String getId ()
     {

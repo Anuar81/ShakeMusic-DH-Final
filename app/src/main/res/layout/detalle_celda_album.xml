@@ -18,6 +18,12 @@
             android:id="@+id/textViewTitle"
             android:text="prueba"/>
 
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="100dp"
+            android:id="@+id/imageViewCover"
+            />
+
 
     </LinearLayout>
 

@@ -2,11 +2,15 @@ package digitalhouse.android.a0317moacns1c_03.View;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,19 +33,29 @@ public class AdapterChartsAlbum extends RecyclerView.Adapter {
 
     public AdapterChartsAlbum(Context context, List<Album> albumList) {
         this.context = context;
-        this.albumList = new ArrayList<>();
+        this.albumList = albumList;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View viewChartAlbum = inflater.inflate(R.layout.fragment_fragment_principal, parent, false);
+        View viewChartAlbum = inflater.inflate(R.layout.detalle_celda_album, parent, false);
         AdapterChartsAlbum.ChartAlbumViewHolder chartAlbumViewHolder = new AdapterChartsAlbum.ChartAlbumViewHolder(viewChartAlbum)  ;
         return chartAlbumViewHolder;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    Album unAlbum =albumList.get(position);
+
+        ChartAlbumViewHolder chartAlbumViewHolder = (ChartAlbumViewHolder) holder;
+
+        TextView textViewChartAlbum = chartAlbumViewHolder.textViewDetalleCeldaChartAlbum;
+        ImageView imageViewChartAlbum = chartAlbumViewHolder.imageViewDetalleCeldaChartImage;
+        textViewChartAlbum.setText(unAlbum.getTitle());
+
+
+        Picasso.with(context).load(unAlbum.getCover()).into(imageViewChartAlbum);
 
     }
 
@@ -51,12 +65,15 @@ public class AdapterChartsAlbum extends RecyclerView.Adapter {
     }
 
     private class ChartAlbumViewHolder extends RecyclerView.ViewHolder{
-        RecyclerView recyclerViewChartAlbum;
+        private TextView textViewDetalleCeldaChartAlbum;
+        private ImageView imageViewDetalleCeldaChartImage;
 
         public ChartAlbumViewHolder(View itemView) {
             super(itemView);
-            recyclerViewChartAlbum = (RecyclerView) itemView.findViewById(R.id.recyclerChartAlbums);
+            imageViewDetalleCeldaChartImage = (ImageView) itemView.findViewById(R.id.imageViewCover);
+            textViewDetalleCeldaChartAlbum = (TextView) itemView.findViewById(R.id.textViewTitle);
 
         }
+
     }
 }
