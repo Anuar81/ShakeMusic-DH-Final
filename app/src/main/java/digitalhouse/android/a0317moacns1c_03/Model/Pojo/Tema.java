@@ -16,7 +16,7 @@ public class Tema {
     private int trackPosition;
     @SerializedName("disk_number")
     private int diskNumber;
-
+    private String preview;
 
     public int getId() {
         return id;
@@ -64,6 +64,14 @@ public class Tema {
 
     public void setDiskNumber(int diskNumber) {
         this.diskNumber = diskNumber;
+    }
+
+    public String getPreview() {
+        return preview;
+    }
+
+    public void setPreview(String preview) {
+        this.preview = preview;
     }
 }
 
