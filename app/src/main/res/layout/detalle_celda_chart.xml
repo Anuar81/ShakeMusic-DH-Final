@@ -23,19 +23,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textViewTitle"
-            android:text="Prueba"
+            android:text="Chart"
             android:textColor="@android:color/holo_green_light"
             android:textSize="22sp"
             />
 
-        <TextView
-            android:id="@+id/description"
-            android:layout_marginTop="4dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:text="Descripcion"
-            />
         <ImageView
             android:layout_width="180dp"
             android:layout_height="100dp"

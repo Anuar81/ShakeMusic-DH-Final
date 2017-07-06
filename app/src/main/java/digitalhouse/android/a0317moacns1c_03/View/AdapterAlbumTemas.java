@@ -34,7 +34,7 @@ public class AdapterAlbumTemas extends RecyclerView.Adapter{
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.detalle_celda_album, parent, false);
+        View view = inflater.inflate(R.layout.detalle_item_album, parent, false);
         TemaViewHolder temaViewHolder = new TemaViewHolder(view);
         return temaViewHolder;
     }
@@ -57,7 +57,7 @@ public class AdapterAlbumTemas extends RecyclerView.Adapter{
 
         public TemaViewHolder(View itemView) {
             super(itemView);
-            textViewTemaTitle = (TextView) itemView.findViewById(R.id.textViewTitle);
+            textViewTemaTitle = (TextView) itemView.findViewById(R.id.textViewTitleTemaAlbum);
            /* imageViewThumbnailUrl = (ImageView) itemView.findViewById(R.id.imageView);*/
 
         }
@@ -67,6 +67,60 @@ public class AdapterAlbumTemas extends RecyclerView.Adapter{
             /*Picasso.with(context).load(album.getThumbnailUrl()).into(imageViewThumbnailUrl);*/
         }
     }
+
+
+
+
+
+   /* VER ADAPTER DEL TOOLBAR (Dato sería Album)
+
+   private List<Dato> lista;
+
+    public MiAdapter(List<Dato> lista){
+        this.lista = lista;
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
+        ViewHolder viewHolder = new ViewHolder(view);
+
+        return viewHolder;
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        ViewHolder viewHolder = (ViewHolder) holder;
+        viewHolder.cargarDato(lista.get(position));
+    }
+
+    @Override
+    public int getItemCount() {
+        return lista.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        private TextView title;
+        private TextView description;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            title = (TextView) itemView.findViewById(R.id.title);
+            description = (TextView) itemView.findViewById(R.id.description);
+        }
+
+        public void cargarDato(Dato dato){
+            title.setText(dato.getTitle());
+            description.setText(dato.getDescription());
+        }
+    }*/
+
+
+
+
+
+
+
 
 
 }

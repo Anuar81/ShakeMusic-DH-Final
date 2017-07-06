@@ -2,21 +2,17 @@ package digitalhouse.android.a0317moacns1c_03.View;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Album;
-import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Artista;
 import digitalhouse.android.a0317moacns1c_03.R;
 
 /**
@@ -39,7 +35,7 @@ public class AdapterChartsAlbum extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View viewChartAlbum = inflater.inflate(R.layout.detalle_celda_album, parent, false);
+        View viewChartAlbum = inflater.inflate(R.layout.detalle_celda_chart, parent, false);
         AdapterChartsAlbum.ChartAlbumViewHolder chartAlbumViewHolder = new AdapterChartsAlbum.ChartAlbumViewHolder(viewChartAlbum)  ;
         return chartAlbumViewHolder;
     }
