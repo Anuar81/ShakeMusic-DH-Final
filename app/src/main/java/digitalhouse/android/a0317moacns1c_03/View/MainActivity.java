@@ -3,6 +3,8 @@ package digitalhouse.android.a0317moacns1c_03.View;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import digitalhouse.android.a0317moacns1c_03.Controller.AlbumController;
+import digitalhouse.android.a0317moacns1c_03.FragmentPrincipal;
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Album;
 import digitalhouse.android.a0317moacns1c_03.R;
 import digitalhouse.android.a0317moacns1c_03.utils.ResultListener;
@@ -25,26 +28,26 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.detalle_album);
+        setContentView(R.layout.activity_main);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        final AdapterAlbumTemas adapterAlbumTemas = new AdapterAlbumTemas(this);
-        recyclerView.setAdapter(adapterAlbumTemas);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+//        final AdapterAlbumTemas adapterAlbumTemas = new AdapterAlbumTemas(this);
+  //      recyclerView.setAdapter(adapterAlbumTemas);
+    //    recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
 
         //SOLICITO LA LISTA AL CONTROLLER (A LA VISTA NO LE IMPORTA DE DONDE TRAE ESA LISTA EL CONTROLLER
-        AlbumController albumController = new AlbumController(this);
-        albumController.obtenerAlbum(new ResultListener<Album>() {
-            @Override
-            public void finish(Album album) {
+    //    AlbumController albumController = new AlbumController(this);
+      //  albumController.obtenerAlbum(new ResultListener<Album>() {
+//            @Override
+        //    public void finish(Album album) {
 
                 //RECIBO EL RESULTADO DE LA LISTA, SE LA PASO AL ADAPTER PARA QUE LA CARGUE Y LE AVISO QUE SE MODIFICARON SUS DATOS
-                adapterAlbumTemas.setTemaList(album.getContainerAlbumTema().getTemaList());
-                adapterAlbumTemas.notifyDataSetChanged();
+          //      adapterAlbumTemas.setTemaList(album.getContainerAlbumTema().getTemaList());
+            //    adapterAlbumTemas.notifyDataSetChanged();
 
-            }
-        });
+          //  }
+       // });
 
         /* codigo de prueba de Abel
         ControllerArtista artista = new ControllerArtista(this);
@@ -76,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        cargarFragmentPrincipal();
         }
 
 
@@ -98,6 +101,26 @@ public class MainActivity extends AppCompatActivity {
         mSensorManager.unregisterListener(mShakeDetector);
         super.onPause();
     }
+
+    public void cargarFragmentPrincipal() {
+        //Creo un Fragment Manager que me permite hacer cosas con los fragments
+        FragmentManager unFragmentManager = getSupportFragmentManager();
+
+        //creo FragmentTransaction que me permite poner un fragment en un activity
+        FragmentTransaction fragmentTransaction = unFragmentManager.beginTransaction();
+
+        //Acá creo una instancia del nuevo fragment
+        FragmentPrincipal fragmentPrincipal = new FragmentPrincipal();
+
+        Bundle unBundle = new Bundle();
+        fragmentPrincipal.setArguments(unBundle);
+
+        fragmentTransaction.replace(R.id.contenedorDelFragmentActivityMain, fragmentPrincipal);
+
+        fragmentTransaction.commit();
+
+    }
+
 
     }
 

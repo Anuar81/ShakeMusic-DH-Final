@@ -47,4 +47,7 @@ public class AdapterArtista extends RecyclerView.Adapter implements View.OnClick
     public void onClick(View v) {
 
     }
+
+
+
 }
