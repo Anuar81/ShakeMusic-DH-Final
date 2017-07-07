@@ -31,6 +31,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL(query);
 
+        String query1 = "CREATE TABLE" + DAOShakesDB.TABLE_SHAKES + "(" +
+                DAOShakesDB.ID + "INTEGER PRIMARY KEY," +
+                DAOShakesDB.NAME + "TEXT NOT NULL," +
+                DAOShakesDB.LINK + "TEXT," +
+                DAOShakesDB.DURATION + "TEXT," +
+                DAOShakesDB.TRACK_POSITION + "TEXT," +
+                DAOShakesDB.DISK_NUMBER + "TEXT)" ;
+
+        db.execSQL(query1);
+
+
     }
 
     @Override

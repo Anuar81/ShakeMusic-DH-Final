@@ -9,12 +9,6 @@
     </item>
 
     <item
-        android:id="@+id/biblioteca"
-        android:title="BIBLIOTECA">
-
-    </item>
-
-    <item
         android:id="@+id/historial"
         android:title="HISTORIAL">
 
