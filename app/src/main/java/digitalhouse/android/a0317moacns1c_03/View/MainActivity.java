@@ -111,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
         },"1");*/
 
 
-
         // ShakeDetector initialization
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager
@@ -135,16 +134,12 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigationView);
 
 
-        MainActivity.NavigationViewListener navigationViewListener = new MainActivity.NavigationViewListener();
+        NavigationViewListener navigationViewListener = new NavigationViewListener();
         navigationView.setNavigationItemSelectedListener(navigationViewListener);
 
-        }
     }
 
 
-
-    private void handleShakeEvent(int count){
-        Toast.makeText(this, "SE SHEIKEO"+count, Toast.LENGTH_SHORT).show();
     private void handleShakeEvent(int count) {
         Toast.makeText(this, "SE SHEIKEO" + count, Toast.LENGTH_SHORT).show();
 
@@ -232,49 +227,3 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
-
-/*                android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-                android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                ShakeFragment shakeFragment = new ShakeFragment();
-                fragmentTransaction.replace(R.id.contenedorViewPager,shakeFragment);
-                *//*fragmentTransaction.addToBackStack(null);*//*
-                fragmentTransaction.commit();*/
-
-                /*Intent intent = new Intent(MainActivity.this,ShakesActivity.class);
-                startActivity(intent);
-
-            }
-
-
-            else if(item.getItemId() == R.id.biblioteca){
-
-
-                Intent intent = new Intent(MainActivity.this,BibliotecaActivity.class);
-
-
-                //Crear otra actividad (detalle de los items)
-
-                startActivity(intent);
-
-            }
-
-            else if(item.getItemId() == R.id.historial){
-
-
-                Intent intent = new Intent(MainActivity.this,HistorialActivity.class);
-
-
-                //Crear otra actividad (detalle de los items)
-
-                startActivity(intent);
-
-            }
-
-            *//*drawerLayout.closeDrawers();*//*
-            return true;
-        }
-    }*/
-
-
-}
-
