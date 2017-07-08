@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Tema;
@@ -29,7 +28,7 @@ public class AdapterChartsTema extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View viewChartTemas = inflater.inflate(R.layout.detalle_celda_album, parent, false);
+        View viewChartTemas = inflater.inflate(R.layout.detalle_celda_chart, parent, false);
         AdapterChartsTema.ChartTemaViewHolder chartTemaViewHolder = new AdapterChartsTema.ChartTemaViewHolder(viewChartTemas);
         return chartTemaViewHolder;
     }

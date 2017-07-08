@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +13,11 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import digitalhouse.android.a0317moacns1c_03.Controller.AlbumController;
 import digitalhouse.android.a0317moacns1c_03.FragmentHistorial;
@@ -35,26 +40,65 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-//        final AdapterAlbumTemas adapterAlbumTemas = new AdapterAlbumTemas(this);
-  //      recyclerView.setAdapter(adapterAlbumTemas);
-    //    recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+/*        //RECYCLER DE ALBUMES FER (DETALLE ALBUM:"COMENTADO")
+        RecyclerView recyclerViewDetalleAlbum = (RecyclerView) findViewById(R.id.recyclerViewDetalleAlbum);
+        final AdapterAlbumTemas adapterAlbumTemas = new AdapterAlbumTemas(this);
+        recyclerViewDetalleAlbum.setAdapter(adapterAlbumTemas);
+        recyclerViewDetalleAlbum.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
 
-        //SOLICITO LA LISTA AL CONTROLLER (A LA VISTA NO LE IMPORTA DE DONDE TRAE ESA LISTA EL CONTROLLER
-    //    AlbumController albumController = new AlbumController(this);
-      //  albumController.obtenerAlbum(new ResultListener<Album>() {
-//            @Override
-        //    public void finish(Album album) {
+        //SOLICITO LA LISTA DE TEMAS AL CONTROLLER DEL DETALLE ALBUM
+        AlbumController albumController = new AlbumController(this);
+        albumController.obtenerAlbum(new ResultListener<Album>() {
+            @Override
+            public void finish(Album album) {
 
                 //RECIBO EL RESULTADO DE LA LISTA, SE LA PASO AL ADAPTER PARA QUE LA CARGUE Y LE AVISO QUE SE MODIFICARON SUS DATOS
-          //      adapterAlbumTemas.setTemaList(album.getContainerAlbumTema().getTemaList());
-            //    adapterAlbumTemas.notifyDataSetChanged();
+                adapterAlbumTemas.setTemaList(album.getContainerAlbumTema().getTemaList());
+                adapterAlbumTemas.notifyDataSetChanged();
 
-          //  }
-       // });
+            }
+        });*/
 
-        /* codigo de prueba de Abel
+
+
+
+/*      // TOOLBAR ALBUMES FER
+        // Detalle Album Toolbar
+        Toolbar toolbarDetalleAlbum = (Toolbar) findViewById(R.id.toolbarDetalleAlbum);
+        setSupportActionBar(toolbarDetalleAlbum);
+
+        // Buscar Collapse ToolBar
+
+        // Create the data model (VER)
+        Album album = new Album(getResources().getString(R.string.ver), getResources().getString(R.string.ver));
+
+        List<Album> lista = new ArrayList<>();
+        for (Integer i = 0; i < 10; i++){
+            lista.add(album);
+        }
+
+        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbarDetalleAlbum);
+
+        collapsingToolbarLayout.setTitle("ALBUMES");
+        collapsingToolbarLayout.setContentScrimResource(R.color.colorPrimary);
+        collapsingToolbarLayout.setStatusBarScrimResource(R.color.colorAccent);
+
+        // Crear el Adapter
+        MiAdapter adapter = new MiAdapter(lista);
+
+        // Find the Recycler View
+        RecyclerView recyclerViewDetalleAlbum = (RecyclerView) findViewById(R.id.recyclerViewDetalleAlbum);
+        // Set Layout Manager
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        // Set Adapter
+        recyclerView.setAdapter(adapter);
+        // Tell the recycler size will not change
+        recyclerView.setHasFixedSize(true);*/
+
+
+                /* codigo de prueba de Abel
         ControllerArtista artista = new ControllerArtista(this);
         artista.traerTemasDeArtista(new ResultListener<List<Tema>>() {
             @Override
@@ -66,6 +110,8 @@ public class MainActivity extends AppCompatActivity {
             }
         },"1");*/
 
+
+
         // ShakeDetector initialization
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager
@@ -75,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onShake(int count) {
-				/*
+                /*
 				 * The following method, "handleShakeEvent(count):" is a stub //
 				 * method you would use to setup whatever you want done once the
 				 * device has been shook.
@@ -93,11 +139,14 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(navigationViewListener);
 
         }
+    }
 
 
 
     private void handleShakeEvent(int count){
         Toast.makeText(this, "SE SHEIKEO"+count, Toast.LENGTH_SHORT).show();
+    private void handleShakeEvent(int count) {
+        Toast.makeText(this, "SE SHEIKEO" + count, Toast.LENGTH_SHORT).show();
 
     }
 
@@ -105,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         // Add the following line to register the Session Manager Listener onResume
-        mSensorManager.registerListener(mShakeDetector, mAccelerometer,	SensorManager.SENSOR_DELAY_UI);
+        mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
     }
 
     @Override
@@ -182,6 +231,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
     }
+}
 
 /*                android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
                 android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

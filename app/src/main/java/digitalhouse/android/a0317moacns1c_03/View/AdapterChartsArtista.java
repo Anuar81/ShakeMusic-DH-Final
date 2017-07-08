@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Artista;
@@ -33,7 +32,7 @@ public class AdapterChartsArtista extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View viewChartArtist = inflater.inflate(R.layout.detalle_celda_album, parent, false);
+        View viewChartArtist = inflater.inflate(R.layout.detalle_celda_chart, parent, false);
         AdapterChartsArtista.ChartArtistaViewHolder chartArtistaViewHolder = new AdapterChartsArtista.ChartArtistaViewHolder(viewChartArtist);
         return chartArtistaViewHolder;
     }
