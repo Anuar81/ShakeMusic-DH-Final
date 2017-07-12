@@ -22,6 +22,7 @@ public class DAOShakesDB extends DatabaseHelper {
     public static final String DURATION = "duration";
     public static final String TRACK_POSITION = "track_position";
     public static final String DISK_NUMBER = "disk_number";
+    public static final String PREVIEW = "preview";
     public static final String TABLE_SHAKES = "shakes";
 
     public DAOShakesDB (Context context) {super (context);}
@@ -39,6 +40,7 @@ public class DAOShakesDB extends DatabaseHelper {
             row.put(DURATION, tema.getDuration());
             row.put(TRACK_POSITION, tema.getTrackPosition());
             row.put(DISK_NUMBER, tema.getDiskNumber());
+            row.put(PREVIEW, tema.getPreview());
 
             database.insert(TABLE_SHAKES, null, row);
 
@@ -69,6 +71,7 @@ public class DAOShakesDB extends DatabaseHelper {
             tema.setDuration(cursor.getInt(cursor.getColumnIndex(DURATION)));
             tema.setTrackPosition(cursor.getInt(cursor.getColumnIndex(TRACK_POSITION)));
             tema.setDiskNumber(cursor.getInt(cursor.getColumnIndex(DISK_NUMBER)));
+            tema.setPreview(cursor.getString(cursor.getColumnIndex(PREVIEW)));
 
             temas.add(tema);
         }
@@ -97,6 +100,7 @@ public class DAOShakesDB extends DatabaseHelper {
             tema.setDuration(cursor.getInt(cursor.getColumnIndex(DURATION)));
             tema.setTrackPosition(cursor.getInt(cursor.getColumnIndex(TRACK_POSITION)));
             tema.setDiskNumber(cursor.getInt(cursor.getColumnIndex(DISK_NUMBER)));
+            tema.setPreview(cursor.getString(cursor.getColumnIndex(PREVIEW)));
 
 
         }

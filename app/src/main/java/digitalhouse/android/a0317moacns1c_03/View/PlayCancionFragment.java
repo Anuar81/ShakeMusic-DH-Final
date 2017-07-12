@@ -17,16 +17,24 @@ import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 
+import digitalhouse.android.a0317moacns1c_03.Controller.ControllerShakes;
+import digitalhouse.android.a0317moacns1c_03.Controller.ControllerTema;
+import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Tema;
 import digitalhouse.android.a0317moacns1c_03.R;
+import digitalhouse.android.a0317moacns1c_03.utils.ResultListener;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class PlayCancionFragment extends Fragment {
 
+    public static final String ID_TEMA = "id_tema";
     public static final String NOMBRE_CANCION = "nombreCancion";
     public static final String RUTA_FOTO_ARTISTA_CANCION = "rutaFoto";
     public static final String RUTA_PREVIEW_CANCION = "rutaPreview";
+    private Tema temaElegido = new Tema();
+    private ControllerShakes controllerShakes;
+
 
     public PlayCancionFragment() {
         // Required empty public constructor
@@ -39,6 +47,7 @@ public class PlayCancionFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_play_cancion, container, false);
         Bundle bundle = getArguments();
+        String idTema = bundle.getString(ID_TEMA);
         String fotoArtistaCancion = bundle.getString(RUTA_FOTO_ARTISTA_CANCION);
         String nombreCancion = bundle.getString(NOMBRE_CANCION);
         final String preview = bundle.getString(RUTA_PREVIEW_CANCION);
@@ -46,6 +55,19 @@ public class PlayCancionFragment extends Fragment {
         ImageView fotoArtista = (ImageView)view.findViewById(R.id.imageViewFotoCancionSeleccionada);
         TextView nombreCanciontv = (TextView)view.findViewById(R.id.textViewTituloCancionSeleccionada);
         final Button btnPlay = (Button)view.findViewById(R.id.btnPlayCancionSeleccionada);
+        final Button btnMisShakesAdd = (Button)view.findViewById(R.id.btnMisShakesAdd);
+        controllerShakes = new ControllerShakes(getActivity());
+
+        //Traemos el tema entero con el id
+
+        ControllerTema controllerTema = new ControllerTema(getActivity());
+        controllerTema.buscarCancion(new ResultListener<Tema>() {
+            @Override
+            public void finish(Tema tema) {
+                temaElegido = tema;
+            }
+        }, idTema);
+
 
         //me fijo si no viene vacio
         if(fotoArtistaCancion != null){
@@ -86,10 +108,20 @@ public class PlayCancionFragment extends Fragment {
                     }
                     player.start();
                     btnPlay.setText("Stop");
+                    //agrego el tema escuchado al historial
+                    controllerShakes.agregarTemaAlHistorial(temaElegido);
+
                 }
 
 
 
+            }
+        });
+
+        btnMisShakesAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                controllerShakes.agregarTemaShake(temaElegido);
             }
         });
 

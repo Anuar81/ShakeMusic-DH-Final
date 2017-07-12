@@ -22,7 +22,7 @@ public class AlbumController {
 
 
 
-    public void obtenerAlbum(final ResultListener<Album> resultListenerFromView){
+    public void obtenerAlbum(final ResultListener<Album> resultListenerFromView,String idAlbumABuscar){
 
 
 
@@ -42,7 +42,7 @@ public class AlbumController {
 
                     resultListenerFromView.finish(album);
                 }
-            });
+            },idAlbumABuscar);
         }
         else {
             //SI NO HAY CONEXION UTILIZO LOS DATOS ALMACENADOS EN LA BASE DE DATOS.
