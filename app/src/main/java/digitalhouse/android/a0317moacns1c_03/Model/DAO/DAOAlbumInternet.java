@@ -14,27 +14,34 @@ import com.google.gson.Gson;
 
 public class DAOAlbumInternet {
 
-    public void getAlbumFromInternet(ResultListener<Album> listenerController){
+    private String idAlbumABuscar;
+
+//    "43197211"
+
+    public void getAlbumFromInternet(ResultListener<Album> listenerController,String idAlbumABuscar){
+
+        this.idAlbumABuscar = idAlbumABuscar;
 
         RetrieveAlbumTask unRetrieveAlbumTask = new RetrieveAlbumTask();
-        unRetrieveAlbumTask.setListenerController(listenerController,"43197211");
+        unRetrieveAlbumTask.setListenerController(listenerController);
         unRetrieveAlbumTask.execute();
 
     }
 
     class RetrieveAlbumTask extends AsyncTask<String,Void,Album> {
         private ResultListener<Album> listenerController;
-        private String id ;
-        public void setListenerController(ResultListener<Album> listenerController,String id) {
+
+
+        public void setListenerController(ResultListener<Album> listenerController) {
             this.listenerController = listenerController;
-            this.id = id;
+
         }
 
         @Override
         protected Album doInBackground(String... params) {
             try {
                 HTTPConnectionManager httpConnectionManager = new HTTPConnectionManager();
-                String stringJSON = httpConnectionManager.getRequestString("https://api.deezer.com/album/"+id);
+                String stringJSON = httpConnectionManager.getRequestString("https://api.deezer.com/album/"+idAlbumABuscar);
 
                 Gson gson = new Gson();
                 Album album = gson.fromJson(stringJSON, Album.class);

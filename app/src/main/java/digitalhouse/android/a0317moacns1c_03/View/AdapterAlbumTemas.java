@@ -22,9 +22,9 @@ public class AdapterAlbumTemas extends RecyclerView.Adapter{
     private Context context;
     private List<Tema> temaList;
 
-    public AdapterAlbumTemas(Context context) {
+    public AdapterAlbumTemas(Context context, List<Tema> temaList) {
         this.context = context;
-        temaList = new ArrayList<>();
+        this.temaList = new ArrayList<>();
     }
 
     public void setTemaList(List<Tema> temaList) {
@@ -67,60 +67,5 @@ public class AdapterAlbumTemas extends RecyclerView.Adapter{
             /*Picasso.with(context).load(album.getThumbnailUrl()).into(imageViewThumbnailUrl);*/
         }
     }
-
-
-
-
-
-   /* VER ADAPTER DEL TOOLBAR (Dato sería Album)
-
-   private List<Dato> lista;
-
-    public MiAdapter(List<Dato> lista){
-        this.lista = lista;
-    }
-
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
-
-        return viewHolder;
-    }
-
-    @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ViewHolder viewHolder = (ViewHolder) holder;
-        viewHolder.cargarDato(lista.get(position));
-    }
-
-    @Override
-    public int getItemCount() {
-        return lista.size();
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView title;
-        private TextView description;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            title = (TextView) itemView.findViewById(R.id.title);
-            description = (TextView) itemView.findViewById(R.id.description);
-        }
-
-        public void cargarDato(Dato dato){
-            title.setText(dato.getTitle());
-            description.setText(dato.getDescription());
-        }
-    }*/
-
-
-
-
-
-
-
-
 
 }

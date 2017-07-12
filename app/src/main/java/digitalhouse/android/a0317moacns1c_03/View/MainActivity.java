@@ -24,6 +24,7 @@ import digitalhouse.android.a0317moacns1c_03.FragmentHistorial;
 import digitalhouse.android.a0317moacns1c_03.FragmentPrincipal;
 import digitalhouse.android.a0317moacns1c_03.FragmentShakes;
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Album;
+import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Tema;
 import digitalhouse.android.a0317moacns1c_03.R;
 import digitalhouse.android.a0317moacns1c_03.utils.ResultListener;
 import digitalhouse.android.a0317moacns1c_03.utils.ShakeDetector;
@@ -35,22 +36,34 @@ public class MainActivity extends AppCompatActivity {
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
 
+
+    private AdapterAlbumTemas adapterAlbumTemas;
+    private List<Tema> temaList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
-/*        //RECYCLER DE ALBUMES FER (DETALLE ALBUM:"COMENTADO")
-        RecyclerView recyclerViewDetalleAlbum = (RecyclerView) findViewById(R.id.recyclerViewDetalleAlbum);
-        final AdapterAlbumTemas adapterAlbumTemas = new AdapterAlbumTemas(this);
-        recyclerViewDetalleAlbum.setAdapter(adapterAlbumTemas);
-        recyclerViewDetalleAlbum.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        //RECYCLER DE ALBUMES FER
+
+        RecyclerView recyclerDetalleAlbum = (RecyclerView) findViewById(R.id.recyclerViewDetalleAlbum);
+
+        recyclerDetalleAlbum.setHasFixedSize(true);
+
+        recyclerDetalleAlbum.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+
+        adapterAlbumTemas = new AdapterAlbumTemas(this,temaList);
+
+        recyclerDetalleAlbum.setAdapter(adapterAlbumTemas);
+
 
 
         //SOLICITO LA LISTA DE TEMAS AL CONTROLLER DEL DETALLE ALBUM
         AlbumController albumController = new AlbumController(this);
         albumController.obtenerAlbum(new ResultListener<Album>() {
+
             @Override
             public void finish(Album album) {
 
@@ -59,56 +72,19 @@ public class MainActivity extends AppCompatActivity {
                 adapterAlbumTemas.notifyDataSetChanged();
 
             }
-        });*/
+        });
 
 
-
-
-/*      // TOOLBAR ALBUMES FER
-        // Detalle Album Toolbar
         Toolbar toolbarDetalleAlbum = (Toolbar) findViewById(R.id.toolbarDetalleAlbum);
         setSupportActionBar(toolbarDetalleAlbum);
 
-        // Buscar Collapse ToolBar
 
-        // Create the data model (VER)
-        Album album = new Album(getResources().getString(R.string.ver), getResources().getString(R.string.ver));
-
-        List<Album> lista = new ArrayList<>();
-        for (Integer i = 0; i < 10; i++){
-            lista.add(album);
-        }
-
-        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbarDetalleAlbum);
-
+        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolBar);
         collapsingToolbarLayout.setTitle("ALBUMES");
         collapsingToolbarLayout.setContentScrimResource(R.color.colorPrimary);
         collapsingToolbarLayout.setStatusBarScrimResource(R.color.colorAccent);
 
-        // Crear el Adapter
-        MiAdapter adapter = new MiAdapter(lista);
 
-        // Find the Recycler View
-        RecyclerView recyclerViewDetalleAlbum = (RecyclerView) findViewById(R.id.recyclerViewDetalleAlbum);
-        // Set Layout Manager
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        // Set Adapter
-        recyclerView.setAdapter(adapter);
-        // Tell the recycler size will not change
-        recyclerView.setHasFixedSize(true);*/
-
-
-                /* codigo de prueba de Abel
-        ControllerArtista artista = new ControllerArtista(this);
-        artista.traerTemasDeArtista(new ResultListener<List<Tema>>() {
-            @Override
-            public void finish(List<Tema> temas) {
-                for (Tema tema:temas
-                     ) {
-                    Toast.makeText(MainActivity.this, tema.getName(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        },"1");*/
 
 
         // ShakeDetector initialization
