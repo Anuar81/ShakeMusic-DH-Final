@@ -57,7 +57,7 @@ public class DAOShakesDB extends DatabaseHelper {
 
         List<Tema> temas = new ArrayList<>();
         SQLiteDatabase database = getReadableDatabase();
-        String select = "SELECT * FROM +" + TABLE_SHAKES;
+        String select = "SELECT * FROM " + TABLE_SHAKES;
 
         Cursor cursor = database.rawQuery(select, null);
         while (cursor.moveToNext()){
@@ -83,8 +83,8 @@ public class DAOShakesDB extends DatabaseHelper {
     public Tema getTema (Integer id){
         SQLiteDatabase database = getReadableDatabase();
 
-        String query = "SELECT * FROM" + TABLE_SHAKES +
-                "WHERE" + ID + "=" + id;
+        String query = "SELECT * FROM " + TABLE_SHAKES +
+                "WHERE " + ID + "=" + id;
 
         Cursor cursor = database.rawQuery(query, null);
         Tema tema = null;

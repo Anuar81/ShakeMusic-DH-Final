@@ -14,7 +14,7 @@ import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Tema;
  * Created by dh3 on 29/06/17.
  */
 
-public class DAOTemaDB extends DatabaseHelper {
+public class DAOShakeHistorialDB extends DatabaseHelper {
 
     public static final String ID = "id";
     public static final String NAME = "name";
@@ -24,7 +24,7 @@ public class DAOTemaDB extends DatabaseHelper {
     public static final String DISK_NUMBER = "disk_number";
     public static final String TABLE_HISTORY = "history";
 
-    public DAOTemaDB (Context context) {super(context);}
+    public DAOShakeHistorialDB(Context context) {super(context);}
 
     public void addTema (Tema tema){
 

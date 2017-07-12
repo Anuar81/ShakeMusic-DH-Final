@@ -1,7 +1,6 @@
 package digitalhouse.android.a0317moacns1c_03.Model.DAO;
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -21,23 +20,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String query = "CREATE TABLE" + DAOTemaDB.TABLE_HISTORY + "(" +
-                DAOTemaDB.ID + "INTEGER PRIMARY KEY," +
-                DAOTemaDB.NAME + "TEXT NOT NULL," +
-                DAOTemaDB.LINK + "TEXT," +
-                DAOTemaDB.DURATION + "TEXT," +
-                DAOTemaDB.TRACK_POSITION + "TEXT," +
-                DAOTemaDB.DISK_NUMBER + "TEXT)" ;
+        String query = "CREATE TABLE " + DAOShakeHistorialDB.TABLE_HISTORY + "(" +
+                DAOShakeHistorialDB.ID + " INTEGER PRIMARY KEY," +
+                DAOShakeHistorialDB.NAME + " TEXT NOT NULL," +
+                DAOShakeHistorialDB.LINK + " TEXT," +
+                DAOShakeHistorialDB.DURATION + "TEXT," +
+                DAOShakeHistorialDB.TRACK_POSITION + " TEXT," +
+                DAOShakeHistorialDB.DISK_NUMBER + " TEXT)" ;
 
         db.execSQL(query);
 
-        String query1 = "CREATE TABLE" + DAOShakesDB.TABLE_SHAKES + "(" +
-                DAOShakesDB.ID + "INTEGER PRIMARY KEY," +
-                DAOShakesDB.NAME + "TEXT NOT NULL," +
-                DAOShakesDB.LINK + "TEXT," +
-                DAOShakesDB.DURATION + "TEXT," +
-                DAOShakesDB.TRACK_POSITION + "TEXT," +
-                DAOShakesDB.DISK_NUMBER + "TEXT)" ;
+        String query1 = "CREATE TABLE " + DAOShakesDB.TABLE_SHAKES + "(" +
+                DAOShakesDB.ID + " INTEGER PRIMARY KEY," +
+                DAOShakesDB.NAME + " TEXT NOT NULL," +
+                DAOShakesDB.LINK + " TEXT," +
+                DAOShakesDB.DURATION + " TEXT," +
+                DAOShakesDB.TRACK_POSITION + " TEXT," +
+                DAOShakesDB.DISK_NUMBER + " TEXT)" ;
 
         db.execSQL(query1);
 
