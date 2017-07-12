@@ -26,7 +26,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 DAOShakeHistorialDB.LINK + " TEXT," +
                 DAOShakeHistorialDB.DURATION + "TEXT," +
                 DAOShakeHistorialDB.TRACK_POSITION + " TEXT," +
-                DAOShakeHistorialDB.DISK_NUMBER + " TEXT)" ;
+                DAOShakeHistorialDB.DISK_NUMBER + " TEXT," +
+                DAOShakeHistorialDB.PREVIEW + " TEXT)" ;
+
 
         db.execSQL(query);
 
@@ -36,7 +38,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 DAOShakesDB.LINK + " TEXT," +
                 DAOShakesDB.DURATION + " TEXT," +
                 DAOShakesDB.TRACK_POSITION + " TEXT," +
-                DAOShakesDB.DISK_NUMBER + " TEXT)" ;
+                DAOShakesDB.DISK_NUMBER + " TEXT," +
+                DAOShakesDB.PREVIEW + " TEXT)" ;
 
         db.execSQL(query1);
 

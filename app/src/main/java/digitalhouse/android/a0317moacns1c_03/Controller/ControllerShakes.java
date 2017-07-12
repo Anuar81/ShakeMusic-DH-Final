@@ -29,9 +29,20 @@ public class ControllerShakes {
         listenerDeVista.finish(daoShakesDB.getAllTemas());
     }
 
+    public void agregarTemaShake (Tema tema){
+        DAOShakeHistorialDB daoShakeHistorialDB = new DAOShakeHistorialDB(context);
+        daoShakeHistorialDB.addTema(tema);
+    }
+
+
     public void obtenerHistorial(final ResultListener<List<Tema>> listenerDeVista) {
 
         DAOShakeHistorialDB daoHistorialDB = new DAOShakeHistorialDB(context);
         listenerDeVista.finish(daoHistorialDB.getAllTemas());
+    }
+
+    public void agregarTemaAlHistorial (Tema tema){
+        DAOShakeHistorialDB daoShakeHistorialDB = new DAOShakeHistorialDB(context);
+        daoShakeHistorialDB.addTema(tema);
     }
 }
