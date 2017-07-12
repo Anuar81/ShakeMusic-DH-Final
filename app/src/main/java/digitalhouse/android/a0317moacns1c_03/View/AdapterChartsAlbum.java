@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -19,30 +20,35 @@ import digitalhouse.android.a0317moacns1c_03.R;
  * Created by federico on 7/1/2017.
  */
 
-public class AdapterChartsAlbum extends RecyclerView.Adapter {
+public class AdapterChartsAlbum extends RecyclerView.Adapter{
     private Context context;
     private List<Album> albumList;
+    private InformarClickAlbum informable;
+
 
     public void setAlbumList(List<Album> albumList) {
         this.albumList = albumList;
     }
 
-    public AdapterChartsAlbum(Context context, List<Album> albumList) {
+    public AdapterChartsAlbum(Context context, List<Album> albumList,InformarClickAlbum informable) {
         this.context = context;
         this.albumList = albumList;
+        this.informable =  informable;
     }
+
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View viewChartAlbum = inflater.inflate(R.layout.detalle_celda_chart, parent, false);
-        AdapterChartsAlbum.ChartAlbumViewHolder chartAlbumViewHolder = new AdapterChartsAlbum.ChartAlbumViewHolder(viewChartAlbum)  ;
+
+        AdapterChartsAlbum.ChartAlbumViewHolder chartAlbumViewHolder = new AdapterChartsAlbum.ChartAlbumViewHolder(viewChartAlbum);
         return chartAlbumViewHolder;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-    Album unAlbum =albumList.get(position);
+    final Album unAlbum =albumList.get(position);
 
         ChartAlbumViewHolder chartAlbumViewHolder = (ChartAlbumViewHolder) holder;
 
@@ -53,6 +59,15 @@ public class AdapterChartsAlbum extends RecyclerView.Adapter {
 
         Picasso.with(context).load(unAlbum.getCover()).into(imageViewChartAlbum);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                informable.informarClickAlbum(unAlbum);
+                Toast.makeText(context, "HOLAFEDE", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 
     @Override
@@ -60,10 +75,11 @@ public class AdapterChartsAlbum extends RecyclerView.Adapter {
         return albumList.size();
     }
 
+
+
     private class ChartAlbumViewHolder extends RecyclerView.ViewHolder{
         private TextView textViewDetalleCeldaChartAlbum;
         private ImageView imageViewDetalleCeldaChartImage;
-
         public ChartAlbumViewHolder(View itemView) {
             super(itemView);
             imageViewDetalleCeldaChartImage = (ImageView) itemView.findViewById(R.id.imageViewCover);
@@ -71,5 +87,9 @@ public class AdapterChartsAlbum extends RecyclerView.Adapter {
 
         }
 
+    }
+
+    public interface InformarClickAlbum{
+        public void informarClickAlbum (Album unAlbum);
     }
 }

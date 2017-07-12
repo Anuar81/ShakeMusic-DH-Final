@@ -28,7 +28,7 @@ import digitalhouse.android.a0317moacns1c_03.R;
 import digitalhouse.android.a0317moacns1c_03.utils.ResultListener;
 import digitalhouse.android.a0317moacns1c_03.utils.ShakeDetector;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements FragmentPrincipal.InformarClickFragment {
 
     // The following are used for the shake detection
     private SensorManager mSensorManager;
@@ -175,6 +175,11 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.contenedorDelFragmentActivityMain, fragmentPrincipal);
 
         fragmentTransaction.commit();
+
+    }
+
+    @Override
+    public void informarClickenFragment(Album album) {
 
     }
 
