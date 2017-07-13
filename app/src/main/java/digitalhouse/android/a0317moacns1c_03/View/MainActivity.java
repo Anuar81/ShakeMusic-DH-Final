@@ -20,10 +20,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import digitalhouse.android.a0317moacns1c_03.Controller.AlbumController;
+import digitalhouse.android.a0317moacns1c_03.Controller.ControllerChartsInternet;
 import digitalhouse.android.a0317moacns1c_03.FragmentHistorial;
 import digitalhouse.android.a0317moacns1c_03.FragmentPrincipal;
 import digitalhouse.android.a0317moacns1c_03.FragmentShakes;
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Album;
+import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Artista;
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Tema;
 import digitalhouse.android.a0317moacns1c_03.R;
 import digitalhouse.android.a0317moacns1c_03.utils.ResultListener;
@@ -35,10 +37,10 @@ public class MainActivity extends AppCompatActivity implements FragmentPrincipal
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
+    private String idAlbumABuscar;
 
 
-    private AdapterAlbumTemas adapterAlbumTemas;
-    private List<Tema> temaList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,43 +48,7 @@ public class MainActivity extends AppCompatActivity implements FragmentPrincipal
         setContentView(R.layout.activity_main);
 
 
-        //RECYCLER DE ALBUMES FER
 
-        RecyclerView recyclerDetalleAlbum = (RecyclerView) findViewById(R.id.recyclerViewDetalleAlbum);
-
-        recyclerDetalleAlbum.setHasFixedSize(true);
-
-        recyclerDetalleAlbum.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
-
-        adapterAlbumTemas = new AdapterAlbumTemas(this,temaList);
-
-        recyclerDetalleAlbum.setAdapter(adapterAlbumTemas);
-
-
-
-        //SOLICITO LA LISTA DE TEMAS AL CONTROLLER DEL DETALLE ALBUM
-        AlbumController albumController = new AlbumController(this);
-        albumController.obtenerAlbum(new ResultListener<Album>() {
-
-            @Override
-            public void finish(Album album) {
-
-                //RECIBO EL RESULTADO DE LA LISTA, SE LA PASO AL ADAPTER PARA QUE LA CARGUE Y LE AVISO QUE SE MODIFICARON SUS DATOS
-                adapterAlbumTemas.setTemaList(album.getContainerAlbumTema().getTemaList());
-                adapterAlbumTemas.notifyDataSetChanged();
-
-            }
-        });
-
-
-        Toolbar toolbarDetalleAlbum = (Toolbar) findViewById(R.id.toolbarDetalleAlbum);
-        setSupportActionBar(toolbarDetalleAlbum);
-
-
-        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolBar);
-        collapsingToolbarLayout.setTitle("ALBUMES");
-        collapsingToolbarLayout.setContentScrimResource(R.color.colorPrimary);
-        collapsingToolbarLayout.setStatusBarScrimResource(R.color.colorAccent);
 
 
 
@@ -156,6 +122,13 @@ public class MainActivity extends AppCompatActivity implements FragmentPrincipal
 
     @Override
     public void informarClickenFragment(Album album) {
+        Intent intent = new Intent(this,DetalleAlbumActivity.class);
+        Bundle bundle = new Bundle();
+        String idAlbumABuscar = album.getId();
+        bundle.putString(FragmentDetalleAlbum.ID_ALBUM_A_BUSCAR, idAlbumABuscar);
+        intent.putExtras(bundle);
+        startActivity(intent);
+
 
     }
 
