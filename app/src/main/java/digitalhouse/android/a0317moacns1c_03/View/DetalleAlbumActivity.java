@@ -55,7 +55,15 @@ public class DetalleAlbumActivity extends AppCompatActivity implements FragmentD
     }
 
     @Override
-    public void informarClickenFragmentDetalleAlbumTema(Tema tema) {
-
+    public void informarClickenFragmentDetalleAlbumTema(Tema tema, Album album) {
+        Intent intent = new Intent(DetalleAlbumActivity.this,DetalleTemaActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString(PlayCancionFragment.ID_TEMA,String.valueOf(tema.getId()));
+        bundle.putString(PlayCancionFragment.RUTA_FOTO_ARTISTA_CANCION,album.getCover_big());
+        bundle.putString(PlayCancionFragment.NOMBRE_CANCION,tema.getName());
+        bundle.putString(PlayCancionFragment.RUTA_PREVIEW_CANCION, tema.getPreview());
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
+
 }

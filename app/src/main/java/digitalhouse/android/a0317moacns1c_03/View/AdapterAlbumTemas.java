@@ -16,15 +16,16 @@ import java.util.List;
 /**
  * Created by dh3 on 19/06/17.
  */
-
 public class AdapterAlbumTemas extends RecyclerView.Adapter{
 
     private Context context;
     private List<Tema> temaList;
+    private InformarClickFragmentDetalleAlbumTema escuchador;
 
-    public AdapterAlbumTemas(Context context, List<Tema> temaList) {
+    public AdapterAlbumTemas(Context context, List<Tema> temaList,InformarClickFragmentDetalleAlbumTema escuchador) {
         this.context = context;
-        this.temaList = new ArrayList<>();
+        this.temaList = temaList;
+        this.escuchador = escuchador;
     }
 
     public void setTemaList(List<Tema> temaList) {
@@ -48,7 +49,6 @@ public class AdapterAlbumTemas extends RecyclerView.Adapter{
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                InformarClickFragmentDetalleAlbumTema escuchador = (InformarClickFragmentDetalleAlbumTema)context;
                 escuchador.informarClickenFragmentDetalleAlbumTema(tema);
             }
         });
