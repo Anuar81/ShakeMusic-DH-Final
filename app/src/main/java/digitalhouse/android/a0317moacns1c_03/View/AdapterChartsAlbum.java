@@ -63,7 +63,7 @@ public class AdapterChartsAlbum extends RecyclerView.Adapter{
             @Override
             public void onClick(View v) {
                 informable.informarClickAlbum(unAlbum);
-                Toast.makeText(context, "HOLAFEDE", Toast.LENGTH_SHORT).show();
+
             }
         });
 
