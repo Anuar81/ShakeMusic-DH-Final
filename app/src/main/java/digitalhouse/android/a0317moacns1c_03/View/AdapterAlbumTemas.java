@@ -42,7 +42,16 @@ public class AdapterAlbumTemas extends RecyclerView.Adapter{
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         TemaViewHolder temaViewHolder = (TemaViewHolder) holder;
-        temaViewHolder.bindTema(temaList.get(position));
+        final Tema tema = temaList.get(position);
+        temaViewHolder.bindTema(tema);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InformarClickFragmentDetalleAlbumTema escuchador = (InformarClickFragmentDetalleAlbumTema)context;
+                escuchador.informarClickenFragmentDetalleAlbumTema(tema);
+            }
+        });
     }
 
     @Override
@@ -66,6 +75,10 @@ public class AdapterAlbumTemas extends RecyclerView.Adapter{
             textViewTemaTitle.setText(tema.getName());
             /*Picasso.with(context).load(album.getThumbnailUrl()).into(imageViewThumbnailUrl);*/
         }
+    }
+
+    public interface InformarClickFragmentDetalleAlbumTema{
+        public void informarClickenFragmentDetalleAlbumTema(Tema tema);
     }
 
 }

@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import digitalhouse.android.a0317moacns1c_03.Controller.AlbumController;
@@ -26,15 +27,15 @@ import digitalhouse.android.a0317moacns1c_03.utils.ResultListener;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentDetalleAlbum extends Fragment {
+public class FragmentDetalleAlbum extends Fragment implements AdapterAlbumTemas.InformarClickFragmentDetalleAlbumTema{
 
     public static final String ID_ALBUM_A_BUSCAR = "idAlbumABuscar";
 
-    /*private AdapterAlbumTemas adapterAlbumTemas;
+    private AdapterAlbumTemas adapterAlbumTemas;
     private List<Tema> temaList;
     private String idAlbumABuscar;
-    private FragmentDetalleAlbum.InformarClickFragmentDetalleAlbum escuchadorDelFragmentDetalleAlbum;
-    private RecyclerView recyclerDetalleAlbum;*/
+    private FragmentDetalleAlbum.InformarClickFragmentDetalleAlbumTema escuchadorDelFragmentDetalleAlbumTema;
+    private RecyclerView recyclerDetalleAlbum;
 
     public FragmentDetalleAlbum() {
         // Required empty public constructor
@@ -47,7 +48,9 @@ public class FragmentDetalleAlbum extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.detalle_album, container, false);
 
-        /*//RECYCLER DE ALBUMES FER
+        temaList = new ArrayList<>();
+
+        //RECYCLER DE ALBUMES FER
 
         RecyclerView recyclerDetalleAlbum = (RecyclerView) view.findViewById(R.id.recyclerViewDetalleAlbum);
         recyclerDetalleAlbum.setHasFixedSize(true);
@@ -55,7 +58,7 @@ public class FragmentDetalleAlbum extends Fragment {
         adapterAlbumTemas = new AdapterAlbumTemas(getContext(),temaList);
         recyclerDetalleAlbum.setAdapter(adapterAlbumTemas);
         Bundle unBundle = getArguments();
-
+        idAlbumABuscar = unBundle.getString(ID_ALBUM_A_BUSCAR);
 
 
         //SOLICITO LA LISTA DE TEMAS AL CONTROLLER DEL DETALLE ALBUM
@@ -81,29 +84,20 @@ public class FragmentDetalleAlbum extends Fragment {
         collapsingToolbarLayout.setContentScrimResource(R.color.colorPrimary);
         collapsingToolbarLayout.setStatusBarScrimResource(R.color.colorAccent);
 
-        */
         return view;
     }
 
-    /*
+
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        escuchadorDelFragmentDetalleAlbum = (FragmentDetalleAlbum.InformarClickFragmentDetalleAlbum)context;
+    public void informarClickenFragmentDetalleAlbumTema(Tema tema) {
+        escuchadorDelFragmentDetalleAlbumTema.informarClickenFragmentDetalleAlbumTema(tema);
+    }
+
+    public interface InformarClickFragmentDetalleAlbumTema{
+        public void informarClickenFragmentDetalleAlbumTema(Tema tema);
     }
 
 
-
-
-    public void informarClickAlbumTema(Tema tema) {
-        escuchadorDelFragmentDetalleAlbum.informarClickenFragmentDetalleAlbum(temaList.get());
-    }
-
-    public interface InformarClickFragmentDetalleAlbum{
-        public void informarClickenFragmentDetalleAlbum(Album album);
-    }
-
-    */
 
 }
