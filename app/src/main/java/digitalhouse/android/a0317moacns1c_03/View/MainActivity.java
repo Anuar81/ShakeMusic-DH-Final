@@ -164,6 +164,8 @@ public class MainActivity extends AppCompatActivity implements FragmentPrincipal
 
                 fragmentTransaction.replace(R.id.contenedorDelFragmentActivityMain, fragmentShakes);
 
+                fragmentTransaction.addToBackStack(null);
+
                 fragmentTransaction.commit();
 
 
@@ -182,6 +184,8 @@ public class MainActivity extends AppCompatActivity implements FragmentPrincipal
                 fragmentHistorial.setArguments(unBundle);
 
                 fragmentTransaction.replace(R.id.contenedorDelFragmentActivityMain, fragmentHistorial);
+
+                fragmentTransaction.addToBackStack(null);
 
                 fragmentTransaction.commit();
 
