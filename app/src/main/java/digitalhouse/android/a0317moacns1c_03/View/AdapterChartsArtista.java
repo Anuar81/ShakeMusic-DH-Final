@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Artista;
+import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Tema;
 import digitalhouse.android.a0317moacns1c_03.R;
 
 /**
@@ -23,10 +24,12 @@ public class AdapterChartsArtista extends RecyclerView.Adapter {
 
     private Context context;
     private List<Artista> artistaList;
+    private InformarClickArtista informable;
 
     public AdapterChartsArtista(Context context, List<Artista> artistaList) {
         this.context = context;
         this.artistaList = artistaList;
+
     }
 
     @Override
@@ -64,5 +67,8 @@ public class AdapterChartsArtista extends RecyclerView.Adapter {
         }
     }
 
+    public interface InformarClickArtista{
+        public void informarClickArtista (Artista artista);
+    }
 
 }
