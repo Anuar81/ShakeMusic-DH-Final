@@ -132,6 +132,16 @@ public class MainActivity extends AppCompatActivity implements FragmentPrincipal
 
     }
 
+    @Override
+    public void informarClickenFragment(Tema tema) {
+        
+    }
+
+    @Override
+    public void informarClickenFragment(Artista artista) {
+
+    }
+
 
     private class NavigationViewListener implements NavigationView.OnNavigationItemSelectedListener {
 

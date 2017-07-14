@@ -25,7 +25,7 @@ import digitalhouse.android.a0317moacns1c_03.utils.ResultListener;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentPrincipal extends Fragment implements AdapterChartsAlbum.InformarClickAlbum{
+public class FragmentPrincipal extends Fragment implements AdapterChartsAlbum.InformarClickAlbum ,AdapterChartsTema.InformarClickTema, AdapterChartsArtista.InformarClickArtista{
 
     private List<Artista>listaDeArtistas;
     private List<Album>listaDeAlbums;
@@ -112,9 +112,22 @@ public class FragmentPrincipal extends Fragment implements AdapterChartsAlbum.In
         escuchadorDelFragment.informarClickenFragment(unAlbum);
     }
 
+    @Override
+    public void informarClickTema(Tema tema) {
+        escuchadorDelFragment.informarClickenFragment(tema);
+    }
+
+    @Override
+    public void informarClickArtista(Artista artista) {
+        escuchadorDelFragment.informarClickenFragment(artista);
+    }
+
     public interface InformarClickFragment{
         public void informarClickenFragment(Album album);
+        public void informarClickenFragment(Tema tema);
+        public void informarClickenFragment(Artista artista);
     }
+
 
 
 

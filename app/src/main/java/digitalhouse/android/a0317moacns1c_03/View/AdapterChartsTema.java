@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Album;
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Tema;
 import digitalhouse.android.a0317moacns1c_03.R;
 
@@ -19,6 +20,7 @@ import digitalhouse.android.a0317moacns1c_03.R;
 public class AdapterChartsTema extends RecyclerView.Adapter {
     private Context context;
     private List<Tema> temaList;
+    private InformarClickTema informable;
 
     public AdapterChartsTema(Context context, List<Tema> temaList) {
         this.context = context;
@@ -55,4 +57,10 @@ public class AdapterChartsTema extends RecyclerView.Adapter {
 
         }
     }
+
+    public interface InformarClickTema{
+        public void informarClickTema (Tema tema);
+    }
+
 }
+
