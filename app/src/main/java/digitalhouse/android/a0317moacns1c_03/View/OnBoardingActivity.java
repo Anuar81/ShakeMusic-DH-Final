@@ -20,6 +20,7 @@ public class OnBoardingActivity extends AppCompatActivity {
 
         viewPager.setAdapter(obViewPagerAdapter);
 
-        //PageIndicatorView pageIndicatorView
+        PageIndicatorView pageIndicatorView = (PageIndicatorView) findViewById(R.id.pageIndicatorView);
+        pageIndicatorView.setViewPager(viewPager);
     }
 }
