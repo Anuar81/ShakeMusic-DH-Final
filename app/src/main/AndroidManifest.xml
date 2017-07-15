@@ -48,7 +48,8 @@
 
         <activity
             android:name=".GeoShakeActivity"
-            android:label="@string/title_activity_geo_shake"></activity>
+            android:label="@string/title_activity_geo_shake" />
+        <activity android:name=".View.OnBoardingActivity"></activity>
     </application>
 
 </manifest>
