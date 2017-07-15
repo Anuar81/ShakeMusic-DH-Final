@@ -4,31 +4,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
-import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import digitalhouse.android.a0317moacns1c_03.Controller.AlbumController;
-import digitalhouse.android.a0317moacns1c_03.Controller.ControllerChartsInternet;
 import digitalhouse.android.a0317moacns1c_03.FragmentHistorial;
 import digitalhouse.android.a0317moacns1c_03.FragmentPrincipal;
 import digitalhouse.android.a0317moacns1c_03.FragmentShakes;
+import digitalhouse.android.a0317moacns1c_03.GeoShakeActivity;
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Album;
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Artista;
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Tema;
 import digitalhouse.android.a0317moacns1c_03.R;
-import digitalhouse.android.a0317moacns1c_03.utils.ResultListener;
 import digitalhouse.android.a0317moacns1c_03.utils.ShakeDetector;
 
 public class MainActivity extends AppCompatActivity implements FragmentPrincipal.InformarClickFragment {
@@ -172,6 +163,14 @@ public class MainActivity extends AppCompatActivity implements FragmentPrincipal
                 fragmentTransaction.addToBackStack(null);
 
                 fragmentTransaction.commit();
+
+
+            }
+
+            if (item.getItemId() == R.id.geoShakes) {
+
+                Intent intent = new Intent(MainActivity.this, GeoShakeActivity.class);
+                startActivity(intent);
 
 
             }

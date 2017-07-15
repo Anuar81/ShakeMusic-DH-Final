@@ -9,6 +9,13 @@
     </item>
 
     <item
+        android:id="@+id/geoShakes"
+        android:title="GEO SHAKES"
+        >
+
+    </item>
+
+    <item
         android:id="@+id/historial"
         android:title="HISTORIAL">
 
