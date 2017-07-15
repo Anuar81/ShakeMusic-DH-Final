@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity implements FragmentPrincipal
 
 
 
-
+        Intent intent = new Intent(MainActivity.this,OnBoardingActivity.class);
+        startActivity(intent);
 
 
 
