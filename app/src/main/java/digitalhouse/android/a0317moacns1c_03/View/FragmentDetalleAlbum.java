@@ -12,6 +12,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,11 +39,18 @@ public class FragmentDetalleAlbum extends Fragment implements AdapterAlbumTemas.
     private String idAlbumABuscar;
     private FragmentDetalleAlbum.InformarClickFragmentDetalleAlbumTema escuchadorDelFragmentDetalleAlbumTema;
     private RecyclerView recyclerDetalleAlbum;
+    private Album albumEncontrado;
+    private ImageView imageViewAlbum;
 
     public FragmentDetalleAlbum() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        escuchadorDelFragmentDetalleAlbumTema = (FragmentDetalleAlbum.InformarClickFragmentDetalleAlbumTema)context;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,10 +65,12 @@ public class FragmentDetalleAlbum extends Fragment implements AdapterAlbumTemas.
         RecyclerView recyclerDetalleAlbum = (RecyclerView) view.findViewById(R.id.recyclerViewDetalleAlbum);
         recyclerDetalleAlbum.setHasFixedSize(true);
         recyclerDetalleAlbum.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        adapterAlbumTemas = new AdapterAlbumTemas(getContext(),temaList);
+        adapterAlbumTemas = new AdapterAlbumTemas(getContext(),temaList,this);
         recyclerDetalleAlbum.setAdapter(adapterAlbumTemas);
         Bundle unBundle = getArguments();
         idAlbumABuscar = unBundle.getString(ID_ALBUM_A_BUSCAR);
+        imageViewAlbum = (ImageView) view.findViewById(R.id.imageViewDetalleAlbum);
+
 
 
         //SOLICITO LA LISTA DE TEMAS AL CONTROLLER DEL DETALLE ALBUM
@@ -71,6 +83,9 @@ public class FragmentDetalleAlbum extends Fragment implements AdapterAlbumTemas.
                 //RECIBO EL RESULTADO DE LA LISTA, SE LA PASO AL ADAPTER PARA QUE LA CARGUE Y LE AVISO QUE SE MODIFICARON SUS DATOS
                 adapterAlbumTemas.setTemaList(album.getContainerAlbumTema().getTemaList());
                 adapterAlbumTemas.notifyDataSetChanged();
+                albumEncontrado = album;
+                Picasso.with(getContext()).load(album.getCover_big()).into(imageViewAlbum);
+
 
             }
         },idAlbumABuscar);
@@ -91,11 +106,11 @@ public class FragmentDetalleAlbum extends Fragment implements AdapterAlbumTemas.
 
     @Override
     public void informarClickenFragmentDetalleAlbumTema(Tema tema) {
-        escuchadorDelFragmentDetalleAlbumTema.informarClickenFragmentDetalleAlbumTema(tema);
+        escuchadorDelFragmentDetalleAlbumTema.informarClickenFragmentDetalleAlbumTema(tema, albumEncontrado);
     }
 
     public interface InformarClickFragmentDetalleAlbumTema{
-        public void informarClickenFragmentDetalleAlbumTema(Tema tema);
+        public void informarClickenFragmentDetalleAlbumTema(Tema tema, Album album);
     }
 
 

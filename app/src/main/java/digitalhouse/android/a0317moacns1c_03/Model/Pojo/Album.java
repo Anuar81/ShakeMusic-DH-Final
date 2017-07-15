@@ -43,6 +43,8 @@ public class Album {
 
 /*    private String label;*/
 
+    private String cover_big;
+
     @SerializedName("tracks")
     private ContainerAlbumTema containerAlbumTema;
 
@@ -51,8 +53,6 @@ public class Album {
     private String available;
 
     private String upc;
-
-    private String cover_big;
 
     private String duration;
 
@@ -168,6 +168,14 @@ public class Album {
 
     public void setContainerAlbumTema(ContainerAlbumTema containerAlbumTema) {
         this.containerAlbumTema = containerAlbumTema;
+    }
+
+    public String getCover_big() {
+        return cover_big;
+    }
+
+    public void setCover_big(String cover_big) {
+        this.cover_big = cover_big;
     }
 
     @Override
