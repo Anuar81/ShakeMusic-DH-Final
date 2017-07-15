@@ -134,12 +134,17 @@ public class MainActivity extends AppCompatActivity implements FragmentPrincipal
 
     @Override
     public void informarClickenFragment(Tema tema) {
-        
+        Intent intent = new Intent(this,DetalleTemaActivity.class);
+        Bundle bundle = new Bundle();
+        Integer idTemaABuscar = tema.getId();
+        bundle.putInt(PlayCancionFragment.ID_TEMA,idTemaABuscar);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     @Override
     public void informarClickenFragment(Artista artista) {
-
+        
     }
 
 
