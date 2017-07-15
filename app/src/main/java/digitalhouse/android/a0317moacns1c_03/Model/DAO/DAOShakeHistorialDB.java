@@ -59,7 +59,7 @@ public class DAOShakeHistorialDB extends DatabaseHelper {
 
         List<Tema> temas = new ArrayList<>();
         SQLiteDatabase database = getReadableDatabase();
-        String select = "SELECT * FROM + TABLE_HISTORY";
+        String select = "SELECT * FROM "+ TABLE_HISTORY;
 
         Cursor cursor = database.rawQuery(select, null);
         while (cursor.moveToNext()){
@@ -85,8 +85,8 @@ public class DAOShakeHistorialDB extends DatabaseHelper {
     public Tema getTema (Integer id){
         SQLiteDatabase database = getReadableDatabase();
 
-        String query = "SELECT * FROM" + TABLE_HISTORY +
-                        "WHERE" + ID + "=" + id;
+        String query = "SELECT * FROM " + TABLE_HISTORY +
+                        " WHERE " + ID + "=" + id;
 
         Cursor cursor = database.rawQuery(query, null);
         Tema tema = null;
