@@ -17,17 +17,22 @@
             android:id="@+id/collapsingToolBar"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-
+            android:fitsSystemWindows="true"
+            app:expandedTitleGravity="bottom|center_horizontal"
+            app:expandedTitleMarginBottom="32dp"
+            app:expandedTitleMarginEnd="64dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:collapsedTitleTextAppearance="@style/TextAppearance.MyApp.Title.Collapsed"
+            app:expandedTitleTextAppearance="@style/TextAppearance.MyApp.Title.Expanded"
+            >
 
             <ImageView
                 android:id="@+id/imageViewDetalleAlbum"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:scaleType="centerCrop"
+                android:layout_height="150dp"
+                android:fitsSystemWindows="true"
+                android:scaleType="fitCenter"
                 app:layout_collapseMode="parallax" />
-
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbarDetalleAlbum"
@@ -36,7 +41,6 @@
                 app:layout_collapseMode="parallax">
 
             </android.support.v7.widget.Toolbar>
-
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
