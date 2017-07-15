@@ -8,6 +8,69 @@ import com.google.gson.annotations.SerializedName;
 
 public class Album {
 
+    private String id;
+    private String cover;
+    private String title;
+    private String cover_big;
+
+    @SerializedName("tracks")
+
+    private ContainerAlbumTema containerAlbumTema;
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
+    }
+
+    public String getId ()
+    {
+        return id;
+    }
+
+    public void setId (String id)
+    {
+        this.id = id;
+    }
+
+    public String getTitle ()
+    {
+        return title;
+    }
+
+    public void setTitle (String title)
+    {
+        this.title = title;
+    }
+
+    public ContainerAlbumTema getContainerAlbumTema() {
+        return containerAlbumTema;
+    }
+
+    public void setContainerAlbumTema(ContainerAlbumTema containerAlbumTema) {
+        this.containerAlbumTema = containerAlbumTema;
+    }
+
+    public String getCover_big() {
+        return cover_big;
+    }
+
+    public void setCover_big(String cover_big) {
+        this.cover_big = cover_big;
+    }
+
+    @Override
+    public String toString() {
+        return "Album{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", containerAlbumTema=" + containerAlbumTema +
+                '}';
+    }
+}
+
 /*    @SerializedName("genres")
     private Genero genero;*/
 
@@ -19,14 +82,7 @@ public class Album {
 
     private String nb_tracks;*/
 
-    private String id;
-
-
-     private String cover;
-
  //   private String share;*/
-
-    private String title;
 
    /* private String cover_medium;
 
@@ -42,11 +98,6 @@ public class Album {
 /*    private Contributors[] contributors;*/
 
 /*    private String label;*/
-
-    private String cover_big;
-
-    @SerializedName("tracks")
-    private ContainerAlbumTema containerAlbumTema;
 
 /*    private String cover_small;
 
@@ -114,24 +165,6 @@ public class Album {
         this.nb_tracks = nb_tracks;
     }*/
 
-    public String getCover() {
-        return cover;
-    }
-
-    public void setCover(String cover) {
-        this.cover = cover;
-    }
-
-    public String getId ()
-    {
-        return id;
-    }
-
-    public void setId (String id)
-    {
-        this.id = id;
-    }
-
    /* public String getCover ()
     {
         return cover;
@@ -151,42 +184,6 @@ public class Album {
     {
         this.share = share;
     }*/
-
-    public String getTitle ()
-    {
-        return title;
-    }
-
-    public void setTitle (String title)
-    {
-        this.title = title;
-    }
-
-    public ContainerAlbumTema getContainerAlbumTema() {
-        return containerAlbumTema;
-    }
-
-    public void setContainerAlbumTema(ContainerAlbumTema containerAlbumTema) {
-        this.containerAlbumTema = containerAlbumTema;
-    }
-
-    public String getCover_big() {
-        return cover_big;
-    }
-
-    public void setCover_big(String cover_big) {
-        this.cover_big = cover_big;
-    }
-
-    @Override
-    public String toString() {
-        return "Album{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", containerAlbumTema=" + containerAlbumTema +
-                '}';
-    }
-}
 
    /* public String getCover_medium ()
     {

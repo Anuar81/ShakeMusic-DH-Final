@@ -9,6 +9,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -119,8 +120,6 @@ public class MainActivity extends AppCompatActivity implements FragmentPrincipal
         bundle.putString(FragmentDetalleAlbum.ID_ALBUM_A_BUSCAR, idAlbumABuscar);
         intent.putExtras(bundle);
         startActivity(intent);
-
-
     }
 
     @Override
@@ -135,7 +134,12 @@ public class MainActivity extends AppCompatActivity implements FragmentPrincipal
 
     @Override
     public void informarClickenFragment(Artista artista) {
-        
+        Intent intent = new Intent(MainActivity.this,DetalleArtistaActivity.class);
+        Bundle bundle = new Bundle();
+        String idArtistaABuscar = artista.getId();
+        bundle.putString(FragmentDetalleArtista.ID_ARTISTA_A_BUSCAR, idArtistaABuscar);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
 
