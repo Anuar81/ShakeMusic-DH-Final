@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -35,3 +36,5 @@ dependencies {
     compile 'com.twitter.sdk.android:twitter:3.0.0'
     testCompile 'junit:junit:4.12'
 }
+
+apply plugin: 'com.google.gms.google-services'
