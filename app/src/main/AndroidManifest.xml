@@ -30,10 +30,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".View.DetalleAlbumActivity" />
+        <activity android:name=".View.LoginActivity"></activity>
         <activity android:name=".View.DetalleTemaActivity" />
-        <activity android:name=".View.TwitterShakeLogin">
-        </activity>
-        <activity android:name=".View.DetalleTemaActivity" />
+        <activity android:name=".View.DetalleArtistaActivity" />
+        <activity android:name=".View.TwitterShakeLogin"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -48,7 +48,8 @@
 
         <activity
             android:name=".GeoShakeActivity"
-            android:label="@string/title_activity_geo_shake"></activity>
+            android:label="@string/title_activity_geo_shake" />
+        <activity android:name=".View.OnBoardingActivity"></activity>
     </application>
 
 </manifest>

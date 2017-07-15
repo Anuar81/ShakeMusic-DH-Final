@@ -22,9 +22,10 @@ public class AdapterChartsTema extends RecyclerView.Adapter {
     private List<Tema> temaList;
     private InformarClickTema informable;
 
-    public AdapterChartsTema(Context context, List<Tema> temaList) {
+    public AdapterChartsTema(Context context, List<Tema> temaList,InformarClickTema informable) {
         this.context = context;
         this.temaList = temaList;
+        this.informable =  informable;
     }
 
     @Override
@@ -37,10 +38,17 @@ public class AdapterChartsTema extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        Tema unTema = temaList.get(position);
+        final Tema unTema = temaList.get(position);
         ChartTemaViewHolder chartTemaViewHolder = (ChartTemaViewHolder) holder;
         TextView textViewChartTema = chartTemaViewHolder.textViewDetalleCeldaChartTema;
         textViewChartTema.setText(unTema.getName());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                informable.informarClickTema(unTema);
+            }
+        });
     }
 
     @Override

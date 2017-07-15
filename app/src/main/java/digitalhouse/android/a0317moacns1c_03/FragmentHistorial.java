@@ -21,7 +21,7 @@ import digitalhouse.android.a0317moacns1c_03.utils.ResultListener;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentHistorial extends Fragment {
+public class FragmentHistorial extends Fragment implements AdapterChartsTema.InformarClickTema {
 
     private RecyclerView recyclerViewHistorial;
     private List<Tema> listaDeTemas;
@@ -42,7 +42,7 @@ public class FragmentHistorial extends Fragment {
         View view = inflater.inflate(R.layout.fragment_historial, container, false);
         recyclerViewHistorial= (RecyclerView)view.findViewById(R.id.recyclerHistorial);
         recyclerViewHistorial.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
-        adapterDeHistorial = new AdapterChartsTema(getActivity(),listaDeTemas);
+        adapterDeHistorial = new AdapterChartsTema(getActivity(),listaDeTemas,FragmentHistorial.this);
 
         cargarRecyclerHistorial();
 
@@ -58,6 +58,11 @@ public class FragmentHistorial extends Fragment {
                 adapterDeHistorial.notifyDataSetChanged();
             }
         });
+    }
+
+    @Override
+    public void informarClickTema(Tema tema) {
+
     }
 }
 

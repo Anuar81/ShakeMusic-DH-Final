@@ -100,7 +100,7 @@ public class FragmentPrincipal extends Fragment implements AdapterChartsAlbum.In
             @Override
             public void finish(List<Tema> temaList) {
                 recyclerViewTemas.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
-                adapterChartsTema= new AdapterChartsTema(getContext(),temaList);
+                adapterChartsTema= new AdapterChartsTema(getContext(),temaList,FragmentPrincipal.this);
                 recyclerViewTemas.setAdapter(adapterChartsTema);
             }
         });
