@@ -21,10 +21,10 @@ import digitalhouse.android.a0317moacns1c_03.R;
  */
 
 public class AdapterChartsAlbum extends RecyclerView.Adapter{
+
     private Context context;
     private List<Album> albumList;
     private InformarClickAlbum informable;
-
 
     public void setAlbumList(List<Album> albumList) {
         this.albumList = albumList;
@@ -36,26 +36,23 @@ public class AdapterChartsAlbum extends RecyclerView.Adapter{
         this.informable =  informable;
     }
 
-
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View viewChartAlbum = inflater.inflate(R.layout.detalle_celda_chart, parent, false);
-
         AdapterChartsAlbum.ChartAlbumViewHolder chartAlbumViewHolder = new AdapterChartsAlbum.ChartAlbumViewHolder(viewChartAlbum);
         return chartAlbumViewHolder;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-    final Album unAlbum =albumList.get(position);
+        final Album unAlbum =albumList.get(position);
 
         ChartAlbumViewHolder chartAlbumViewHolder = (ChartAlbumViewHolder) holder;
 
         TextView textViewChartAlbum = chartAlbumViewHolder.textViewDetalleCeldaChartAlbum;
         ImageView imageViewChartAlbum = chartAlbumViewHolder.imageViewDetalleCeldaChartImage;
         textViewChartAlbum.setText(unAlbum.getTitle());
-
 
         Picasso.with(context).load(unAlbum.getCover()).into(imageViewChartAlbum);
 
@@ -66,16 +63,12 @@ public class AdapterChartsAlbum extends RecyclerView.Adapter{
 
             }
         });
-
-
     }
 
     @Override
     public int getItemCount() {
         return albumList.size();
     }
-
-
 
     private class ChartAlbumViewHolder extends RecyclerView.ViewHolder{
         private TextView textViewDetalleCeldaChartAlbum;
@@ -84,9 +77,7 @@ public class AdapterChartsAlbum extends RecyclerView.Adapter{
             super(itemView);
             imageViewDetalleCeldaChartImage = (ImageView) itemView.findViewById(R.id.imageViewCover);
             textViewDetalleCeldaChartAlbum = (TextView) itemView.findViewById(R.id.textViewTitle);
-
         }
-
     }
 
     public interface InformarClickAlbum{

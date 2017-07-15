@@ -5,22 +5,13 @@ import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
-import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import digitalhouse.android.a0317moacns1c_03.Controller.AlbumController;
-import digitalhouse.android.a0317moacns1c_03.Controller.ControllerChartsInternet;
 import digitalhouse.android.a0317moacns1c_03.FragmentHistorial;
 import digitalhouse.android.a0317moacns1c_03.FragmentPrincipal;
 import digitalhouse.android.a0317moacns1c_03.FragmentShakes;
@@ -28,7 +19,6 @@ import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Album;
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Artista;
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Tema;
 import digitalhouse.android.a0317moacns1c_03.R;
-import digitalhouse.android.a0317moacns1c_03.utils.ResultListener;
 import digitalhouse.android.a0317moacns1c_03.utils.ShakeDetector;
 
 public class MainActivity extends AppCompatActivity implements FragmentPrincipal.InformarClickFragment {
@@ -128,8 +118,6 @@ public class MainActivity extends AppCompatActivity implements FragmentPrincipal
         bundle.putString(FragmentDetalleAlbum.ID_ALBUM_A_BUSCAR, idAlbumABuscar);
         intent.putExtras(bundle);
         startActivity(intent);
-
-
     }
 
     @Override
@@ -144,7 +132,12 @@ public class MainActivity extends AppCompatActivity implements FragmentPrincipal
 
     @Override
     public void informarClickenFragment(Artista artista) {
-        
+        Intent intent = new Intent(MainActivity.this,DetalleArtistaActivity.class);
+        Bundle bundle = new Bundle();
+        String idArtistaABuscar = artista.getId();
+        bundle.putString(FragmentDetalleArtista.ID_ARTISTA_A_BUSCAR, idArtistaABuscar);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
 

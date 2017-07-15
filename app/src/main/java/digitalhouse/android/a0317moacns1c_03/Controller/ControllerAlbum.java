@@ -12,19 +12,15 @@ import digitalhouse.android.a0317moacns1c_03.utils.ResultListener;
  * Created by dh3 on 19/06/17.
  */
 
-public class AlbumController {
+public class ControllerAlbum {
 
     private Context context;
 
-    public AlbumController(Context context) {
+    public ControllerAlbum(Context context) {
         this.context = context;
     }
 
-
-
     public void obtenerAlbum(final ResultListener<Album> resultListenerFromView,String idAlbumABuscar){
-
-
 
         if(HTTPConnectionManager.isNetworkingOnline(context)){
 

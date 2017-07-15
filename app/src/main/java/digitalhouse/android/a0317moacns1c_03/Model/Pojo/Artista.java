@@ -7,22 +7,24 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class Artista {
-    private Integer id;
+    private String id;
     private String link;
     private String name;
     private String picture;
+
     @SerializedName("picture_medium")
     private String pictureMedium;
+
     @SerializedName("nb_album")
     private Integer cantidadAlbums;
     private String tracklist;
     private String type;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

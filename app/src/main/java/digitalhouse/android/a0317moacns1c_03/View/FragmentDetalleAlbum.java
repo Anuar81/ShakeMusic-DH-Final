@@ -19,9 +19,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-import digitalhouse.android.a0317moacns1c_03.Controller.AlbumController;
-import digitalhouse.android.a0317moacns1c_03.Controller.ControllerChartsInternet;
-import digitalhouse.android.a0317moacns1c_03.FragmentPrincipal;
+import digitalhouse.android.a0317moacns1c_03.Controller.ControllerAlbum;
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Album;
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Tema;
 import digitalhouse.android.a0317moacns1c_03.R;
@@ -84,8 +82,8 @@ public class FragmentDetalleAlbum extends Fragment implements AdapterAlbumTemas.
 
 
         //SOLICITO LA LISTA DE TEMAS AL CONTROLLER DEL DETALLE ALBUM
-        AlbumController albumController = new AlbumController(getContext());
-        albumController.obtenerAlbum(new ResultListener<Album>() {
+        ControllerAlbum controllerAlbum = new ControllerAlbum(getContext());
+        controllerAlbum.obtenerAlbum(new ResultListener<Album>() {
 
             @Override
             public void finish(Album album) {
