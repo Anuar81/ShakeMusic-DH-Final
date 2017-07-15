@@ -8,4 +8,14 @@
     <style name="red" parent="android:Theme.Material.NoActionBar" >
         <item name="android:colorAccent">@color/accent_material_dark_2</item>
     </style>
+
+    <style name="TextAppearance.MyApp.Title.Collapsed" parent="android:TextAppearance">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextAppearance.MyApp.Title.Expanded" parent="android:TextAppearance">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">25sp</item>
+    </style>
 </resources>

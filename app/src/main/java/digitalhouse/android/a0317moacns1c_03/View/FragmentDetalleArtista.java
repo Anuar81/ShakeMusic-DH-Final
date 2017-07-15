@@ -109,6 +109,8 @@ public class FragmentDetalleArtista extends Fragment implements AdapterArtistaTe
         collapsingToolbarLayout.setTitle("ARTISTA");
         collapsingToolbarLayout.setContentScrimResource(R.color.colorPrimary);
         collapsingToolbarLayout.setStatusBarScrimResource(R.color.colorAccent);
+        collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.TextAppearance_MyApp_Title_Collapsed);
+        collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.TextAppearance_MyApp_Title_Expanded);
 
         return view;
 

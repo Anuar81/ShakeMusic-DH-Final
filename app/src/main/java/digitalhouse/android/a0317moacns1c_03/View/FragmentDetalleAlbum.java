@@ -94,6 +94,8 @@ public class FragmentDetalleAlbum extends Fragment implements AdapterAlbumTemas.
                 albumEncontrado = album;
                 Picasso.with(getContext()).load(album.getCover_big()).into(imageViewAlbum);
                 collapsingToolbarLayout.setTitle(albumEncontrado.getTitle());
+                collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.TextAppearance_MyApp_Title_Collapsed);
+                collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.TextAppearance_MyApp_Title_Expanded);
 
 
 
