@@ -96,6 +96,8 @@ public class FragmentDetalleAlbum extends Fragment implements AdapterAlbumTemas.
                 collapsingToolbarLayout.setTitle(albumEncontrado.getTitle());
 
 
+
+
             }
         },idAlbumABuscar);
 

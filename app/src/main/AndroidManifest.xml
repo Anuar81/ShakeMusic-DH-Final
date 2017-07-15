@@ -23,22 +23,17 @@
         android:supportsRtl="true"
         android:theme="@style/MaterialRed">
         <activity android:name=".View.MainActivity">
-
-        </activity>
-        <activity android:name=".View.DetalleAlbumActivity" />
-        <activity android:name=".View.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
+        <activity android:name=".View.DetalleAlbumActivity" />
+        <activity android:name=".View.LoginActivity"></activity>
         <activity android:name=".View.DetalleTemaActivity" />
-        <activity android:name=".View.TwitterShakeLogin">
-        </activity>
-        <activity android:name=".View.DetalleTemaActivity" />
+        <activity android:name=".View.DetalleArtistaActivity" />
+        <activity android:name=".View.TwitterShakeLogin"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

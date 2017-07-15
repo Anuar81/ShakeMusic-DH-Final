@@ -22,7 +22,7 @@ import digitalhouse.android.a0317moacns1c_03.utils.ResultListener;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentShakes extends Fragment {
+public class FragmentShakes extends Fragment implements AdapterChartsTema.InformarClickTema{
 
     private RecyclerView recyclerViewShakes;
     private List<Tema> listaDeTemas;
@@ -44,7 +44,7 @@ public class FragmentShakes extends Fragment {
         View view = inflater.inflate(R.layout.fragment_shakes, container, false);
         recyclerViewShakes= (RecyclerView)view.findViewById(R.id.recyclerShakes);
         recyclerViewShakes.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
-        adapterdeShakes = new AdapterChartsTema(getActivity(),listaDeTemas);
+        adapterdeShakes = new AdapterChartsTema(getActivity(),listaDeTemas,FragmentShakes.this);
 
         cargarRecyclerShakes();
 
@@ -61,5 +61,10 @@ public class FragmentShakes extends Fragment {
                 adapterdeShakes.notifyDataSetChanged();
             }
         });
+    }
+
+    @Override
+    public void informarClickTema(Tema tema) {
+
     }
 }

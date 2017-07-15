@@ -1,6 +1,7 @@
 package digitalhouse.android.a0317moacns1c_03.View;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
@@ -48,6 +49,12 @@ public class FragmentDetalleArtista extends Fragment implements AdapterArtistaTe
 
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        escuchadorDelFragmentDetalleArtistaTema = (InformarClickFragmentDetalleArtistaTema) context;
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -75,10 +82,9 @@ public class FragmentDetalleArtista extends Fragment implements AdapterArtistaTe
                 //RECIBO EL RESULTADO DE LA LISTA, SE LA PASO AL ADAPTER PARA QUE LA CARGUE Y LE AVISO QUE SE MODIFICARON SUS DATOS
                 //adapterArtistaTemas.setTemaList(artista.getContainerArtistaTema().getTemaList());
                 //adapterArtistaTemas.notifyDataSetChanged();
-                //artistaEncontrado = artista;
                 Picasso.with(getContext()).load(artista.getPictureMedium()).into(imageViewArtista);
-
-                String id = artista.getId();
+                artistaEncontrado = artista;
+                        String id = artista.getId();
                 controllerArtista.obtenerPlayListArtista(new ResultListener<List<Tema>>() {
                     @Override
                     public void finish(List<Tema> temaList) {

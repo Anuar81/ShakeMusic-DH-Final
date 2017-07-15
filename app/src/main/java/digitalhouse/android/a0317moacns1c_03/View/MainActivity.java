@@ -124,10 +124,12 @@ public class MainActivity extends AppCompatActivity implements FragmentPrincipal
 
     @Override
     public void informarClickenFragment(Tema tema) {
-        Intent intent = new Intent(this,DetalleTemaActivity.class);
+        Intent intent = new Intent(MainActivity.this, DetalleTemaActivity.class);
         Bundle bundle = new Bundle();
-        Integer idTemaABuscar = tema.getId();
-        bundle.putInt(PlayCancionFragment.ID_TEMA,idTemaABuscar);
+        bundle.putString(PlayCancionFragment.ID_TEMA, String.valueOf(tema.getId()));
+        bundle.putString(PlayCancionFragment.RUTA_FOTO_ARTISTA_CANCION, tema.getName());
+        bundle.putString(PlayCancionFragment.NOMBRE_CANCION, tema.getName());
+        bundle.putString(PlayCancionFragment.RUTA_PREVIEW_CANCION, tema.getPreview());
         intent.putExtras(bundle);
         startActivity(intent);
     }
