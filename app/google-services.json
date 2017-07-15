@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "430780509289",
+    "firebase_url": "https://shakeapp-ac70c.firebaseio.com",
+    "project_id": "shakeapp-ac70c",
+    "storage_bucket": "shakeapp-ac70c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430780509289:android:de90a91ff864462c",
+        "android_client_info": {
+          "package_name": "digitalhouse.android.a0317moacns1c_03"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "430780509289-o7sq5h8ju0iabjlihk6p7n31vfqg245p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "digitalhouse.android.a0317moacns1c_03",
+            "certificate_hash": "55e585ee89075e4fa872073991230cf3938bf4dd"
+          }
+        },
+        {
+          "client_id": "430780509289-72fd4aj11hvnmfbbe86qgo00p9ajmaqc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKOr3CGcQP9e7PCtYGEHMezxPr4VgbbAg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "430780509289-72fd4aj11hvnmfbbe86qgo00p9ajmaqc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
