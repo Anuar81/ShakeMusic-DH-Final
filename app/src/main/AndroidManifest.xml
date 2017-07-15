@@ -22,9 +22,7 @@
         android:label=""
         android:supportsRtl="true"
         android:theme="@style/MaterialRed">
-        <activity android:name=".View.MainActivity">
-
-        </activity>
+        <activity android:name=".View.MainActivity"></activity>
         <activity android:name=".View.DetalleAlbumActivity" />
         <activity android:name=".View.LoginActivity">
             <intent-filter>
@@ -32,12 +30,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
         <activity android:name=".View.DetalleTemaActivity" />
-        <activity android:name=".View.TwitterShakeLogin">
-        </activity>
+        <activity android:name=".View.TwitterShakeLogin"></activity>
         <activity android:name=".View.DetalleTemaActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -53,7 +48,8 @@
 
         <activity
             android:name=".GeoShakeActivity"
-            android:label="@string/title_activity_geo_shake"></activity>
+            android:label="@string/title_activity_geo_shake" />
+        <activity android:name=".View.OnBoardingActivity"></activity>
     </application>
 
 </manifest>
