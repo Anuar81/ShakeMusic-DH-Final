@@ -7,4 +7,5 @@
     <string name="com.twitter.sdk.android.CONSUMER_KEY">iaQRggwtOaUI0Dd6ss5xbnHAX</string>
     <string name="com.twitter.sdk.android.CONSUMER_SECRET">NaCi41Uh8xwGX31121t0qSkIKKcIUg1k4Y1LCAjG9IlMySgSEX</string>
 
+    <string name="title_activity_geo_shake">GeoShake</string>
 </resources>

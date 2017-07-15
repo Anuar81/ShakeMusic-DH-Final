@@ -47,7 +47,7 @@ public class FragmentPrincipal extends Fragment implements AdapterChartsAlbum.In
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_fragment_principal, container, false);
+        View view = inflater.inflate(R.layout.fragment_principal, container, false);
         recyclerViewAlbums = (RecyclerView)view.findViewById(R.id.recyclerChartAlbums);
         recyclerViewArtistas = (RecyclerView)view.findViewById(R.id.recyclerChartArtists);
         recyclerViewTemas = (RecyclerView)view.findViewById(R.id.recyclerChartTracks);
@@ -86,7 +86,7 @@ public class FragmentPrincipal extends Fragment implements AdapterChartsAlbum.In
             @Override
             public void finish(List<Artista> artistaList) {
                 recyclerViewArtistas.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
-                adapterChartsArtista= new AdapterChartsArtista(getContext(),artistaList);
+                adapterChartsArtista= new AdapterChartsArtista(getContext(),artistaList,FragmentPrincipal.this);
                 recyclerViewArtistas.setAdapter(adapterChartsArtista);
             }
         });

@@ -15,21 +15,48 @@ import digitalhouse.android.a0317moacns1c_03.utils.ResultListener;
  */
 
 public class ControllerArtista {
+
     private Context context;
 
     public ControllerArtista(Context context) {
         this.context = context;
     }
 
-    public void buscarArtista(final ResultListener<Artista>listenerDeVista, String idArtista){
+    public void obtenerArtista(final ResultListener<Artista> resultListenerFromView,String idArtistaABuscar){
+
         if(HTTPConnectionManager.isNetworkingOnline(context)){
+
             DAOArtistaInternet daoArtistaInternet = new DAOArtistaInternet();
             daoArtistaInternet.buscarArtistaInternet(new ResultListener<Artista>() {
                 @Override
                 public void finish(Artista artista) {
-                    listenerDeVista.finish(artista);
+                    resultListenerFromView.finish(artista);
                 }
-            },idArtista);
+            },idArtistaABuscar);
+        }
+        else {
+            //SI NO HAY CONEXION UTILIZO LOS DATOS ALMACENADOS EN LA BASE DE DATOS.
+
+        }
+    }
+
+
+
+    public void obtenerPlayListArtista(final ResultListener<List<Tema>> resultListenerFromView,String idArtistaABuscar){
+
+        if(HTTPConnectionManager.isNetworkingOnline(context)){
+
+            DAOArtistaInternet daoArtistaInternet = new DAOArtistaInternet();
+            daoArtistaInternet.buscarPlayListArtistaInternet(new ResultListener<List<Tema>>() {
+                @Override
+                public void finish(List<Tema> temaList) {
+                    resultListenerFromView.finish(temaList);
+                }
+            },idArtistaABuscar);
+        }
+        else {
+            //SI NO HAY CONEXION UTILIZO LOS DATOS ALMACENADOS EN LA BASE DE DATOS.
+
         }
     }
 
@@ -45,4 +72,6 @@ public class ControllerArtista {
 
         }
     }
+
+
 }

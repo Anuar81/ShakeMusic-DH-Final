@@ -25,10 +25,18 @@ public class DAOArtistaInternet {
     Integer limite;
     Integer inicio;
 
+
     public void buscarArtistaInternet(ResultListener<Artista> artistaDeController, String idArtistaABuscar){
         this.idArtistaABuscar = idArtistaABuscar;
         MinionArtista minionArtista = new MinionArtista();
         minionArtista.setArtistaController(artistaDeController);
+        minionArtista.execute();
+    }
+
+    public void buscarPlayListArtistaInternet(ResultListener<List<Tema>> artistaDeController, String idArtistaABuscar){
+        this.idArtistaABuscar=idArtistaABuscar;
+        MinionListaCancionesArtista minionArtista = new MinionListaCancionesArtista();
+        minionArtista.setListenerDeController(artistaDeController);
         minionArtista.execute();
     }
 

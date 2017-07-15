@@ -12,6 +12,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Album;
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Artista;
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Tema;
 import digitalhouse.android.a0317moacns1c_03.R;
@@ -26,10 +27,14 @@ public class AdapterChartsArtista extends RecyclerView.Adapter {
     private List<Artista> artistaList;
     private InformarClickArtista informable;
 
-    public AdapterChartsArtista(Context context, List<Artista> artistaList) {
+    public void setArtistaList(List<Artista> artistaList) {
+        this.artistaList = artistaList;
+    }
+
+    public AdapterChartsArtista(Context context, List<Artista> artistaList,InformarClickArtista informable) {
         this.context = context;
         this.artistaList = artistaList;
-
+        this.informable =  informable;
     }
 
     @Override
@@ -42,13 +47,22 @@ public class AdapterChartsArtista extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        Artista unArtista = artistaList.get(position);
+        final Artista unArtista = artistaList.get(position);
+
         ChartArtistaViewHolder chartArtistaViewHolder = (ChartArtistaViewHolder) holder;
+
         TextView textViewChartArtista = chartArtistaViewHolder.textViewDetalleCeldaChartArtista;
         ImageView imageViewChartArtista = chartArtistaViewHolder.imageViewDetalleCeldaChartArtista;
         textViewChartArtista.setText(unArtista.getName());
+
         Picasso.with(context).load(unArtista.getPicture()).into(imageViewChartArtista);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                informable.informarClickArtista(unArtista);
+            }
+        });
     }
 
     @Override
@@ -59,7 +73,6 @@ public class AdapterChartsArtista extends RecyclerView.Adapter {
     private class ChartArtistaViewHolder extends RecyclerView.ViewHolder{
         private TextView textViewDetalleCeldaChartArtista;
         private ImageView imageViewDetalleCeldaChartArtista;
-
         public ChartArtistaViewHolder(View itemView) {
             super(itemView);
             textViewDetalleCeldaChartArtista = (TextView) itemView.findViewById(R.id.textViewTitle);
