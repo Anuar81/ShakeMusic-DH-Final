@@ -72,6 +72,16 @@ public class FragmentDetalleAlbum extends Fragment implements AdapterAlbumTemas.
         imageViewAlbum = (ImageView) view.findViewById(R.id.imageViewDetalleAlbum);
 
 
+        Toolbar toolbarDetalleAlbum = (Toolbar) view.findViewById(R.id.toolbarDetalleAlbum);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbarDetalleAlbum);
+
+        final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) view.findViewById(R.id.collapsingToolBar);
+
+        collapsingToolbarLayout.setContentScrimResource(R.color.colorPrimary);
+        collapsingToolbarLayout.setStatusBarScrimResource(R.color.colorAccent);
+        collapsingToolbarLayout.setTitle("");
+
+
 
         //SOLICITO LA LISTA DE TEMAS AL CONTROLLER DEL DETALLE ALBUM
         AlbumController albumController = new AlbumController(getContext());
@@ -85,19 +95,14 @@ public class FragmentDetalleAlbum extends Fragment implements AdapterAlbumTemas.
                 adapterAlbumTemas.notifyDataSetChanged();
                 albumEncontrado = album;
                 Picasso.with(getContext()).load(album.getCover_big()).into(imageViewAlbum);
+                collapsingToolbarLayout.setTitle(albumEncontrado.getTitle());
 
 
             }
         },idAlbumABuscar);
 
 
-        Toolbar toolbarDetalleAlbum = (Toolbar) view.findViewById(R.id.toolbarDetalleAlbum);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbarDetalleAlbum);
 
-        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) view.findViewById(R.id.collapsingToolBar);
-        collapsingToolbarLayout.setTitle("ALBUMES");
-        collapsingToolbarLayout.setContentScrimResource(R.color.colorPrimary);
-        collapsingToolbarLayout.setStatusBarScrimResource(R.color.colorAccent);
 
         return view;
     }
