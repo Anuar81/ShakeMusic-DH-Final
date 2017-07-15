@@ -12,8 +12,8 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:supportsRtl="true"
         android:label=""
+        android:supportsRtl="true"
         android:theme="@style/MaterialRed">
         <activity android:name=".View.MainActivity">
             <intent-filter>
@@ -24,7 +24,8 @@
         </activity>
         <activity android:name=".View.DetalleAlbumActivity" />
         <activity android:name=".View.DetalleTemaActivity" />
-        <activity android:name=".View.DetalleArtistaActivity"></activity>
+        <activity android:name=".View.TwitterShakeLogin">
+        </activity>
     </application>
 
 </manifest>
