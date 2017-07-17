@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements FragmentPrincipal
 				 * method you would use to setup whatever you want done once the
 				 * device has been shook.
 				 */
+                Toast.makeText(MainActivity.this, "SE SHEIKEO" + count, Toast.LENGTH_SHORT).show();
                 handleShakeEvent(count);
             }
         });

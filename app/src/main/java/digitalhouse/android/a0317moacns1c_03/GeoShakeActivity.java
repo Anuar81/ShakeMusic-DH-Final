@@ -3,6 +3,7 @@ package digitalhouse.android.a0317moacns1c_03;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -27,6 +28,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -91,8 +93,8 @@ public class GeoShakeActivity extends FragmentActivity implements OnMapReadyCall
     protected void placeMarkerOnMap(LatLng location) {
         // 1
         MarkerOptions markerOptions = new MarkerOptions().position(location);
-        /*markerOptions.icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource
-                (getResources(), R.mipmap.ic_user_location)));*/ //Para cambiar el ícono (agregar icono a mipmap)
+        markerOptions.icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource
+                (getResources(), R.mipmap.ic_launcher_round3))); //Para cambiar el ícono (agregar icono a mipmap)
 
         String titleStr = getAddress(location);
         markerOptions.title(titleStr);
