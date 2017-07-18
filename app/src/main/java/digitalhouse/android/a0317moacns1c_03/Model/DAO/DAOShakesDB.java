@@ -87,7 +87,7 @@ public class DAOShakesDB extends DatabaseHelper {
         SQLiteDatabase database = getReadableDatabase();
 
         String query = "SELECT * FROM " + TABLE_SHAKES +
-                "WHERE " + ID + "=" + id;
+                " WHERE " + ID + "=" + id;
 
         Cursor cursor = database.rawQuery(query, null);
         Tema tema = null;

@@ -80,6 +80,7 @@ public class PlayCancionFragment extends Fragment {
         String idArtista = bundle.getString(ID_ARTISTA);
 
         //llamo e intento traer la lista de temas del album
+/*
         ControllerAlbum controllerAlbum = new ControllerAlbum(getContext());
         controllerAlbum.obtenerAlbum(new ResultListener<Album>() {
             @Override
@@ -89,6 +90,7 @@ public class PlayCancionFragment extends Fragment {
         }, idAlbum);
 
 
+*/
 
 
         ImageView fotoArtista = (ImageView)view.findViewById(R.id.imageViewFotoCancionSeleccionada);
@@ -129,19 +131,6 @@ public class PlayCancionFragment extends Fragment {
                 }else{
                     try {
                         player.setDataSource(preview);
-                    } catch (IllegalArgumentException e) {
-                        Toast.makeText(getContext(), "You might not set the URI correctly!", Toast.LENGTH_LONG).show();
-                    } catch (SecurityException e) {
-                        Toast.makeText(getContext(), "You might not set the URI correctly!", Toast.LENGTH_LONG).show();
-                    } catch (IllegalStateException e) {
-                        Toast.makeText(getContext(), "You might not set the URI correctly!", Toast.LENGTH_LONG).show();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        player.prepare();
-                    } catch (IllegalStateException e) {
-                        Toast.makeText(getContext(), "You might not set the URI correctly!", Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
                         Toast.makeText(getContext(), "You might not set the URI correctly!", Toast.LENGTH_LONG).show();
                     }

@@ -43,11 +43,11 @@ public class FragmentShakes extends Fragment implements AdapterChartsTema.Inform
 
         View view = inflater.inflate(R.layout.fragment_shakes, container, false);
         recyclerViewShakes= (RecyclerView)view.findViewById(R.id.recyclerShakes);
-        recyclerViewShakes.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
+        recyclerViewShakes.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL,false));
         adapterdeShakes = new AdapterChartsTema(getActivity(),listaDeTemas,FragmentShakes.this);
 
+        recyclerViewShakes.setAdapter(adapterdeShakes);
         cargarRecyclerShakes();
-
 
         return view;
     }

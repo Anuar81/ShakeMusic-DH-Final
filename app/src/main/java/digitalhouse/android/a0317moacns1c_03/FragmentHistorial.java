@@ -43,6 +43,8 @@ public class FragmentHistorial extends Fragment implements AdapterChartsTema.Inf
         recyclerViewHistorial= (RecyclerView)view.findViewById(R.id.recyclerHistorial);
         recyclerViewHistorial.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
         adapterDeHistorial = new AdapterChartsTema(getActivity(),listaDeTemas,FragmentHistorial.this);
+        recyclerViewHistorial.setAdapter(adapterDeHistorial);
+        Bundle unBundle = getArguments();
 
         cargarRecyclerHistorial();
 
@@ -51,7 +53,7 @@ public class FragmentHistorial extends Fragment implements AdapterChartsTema.Inf
     }
     private void cargarRecyclerHistorial (){
         ControllerShakes controllerShakes = new ControllerShakes(getContext());
-        controllerShakes.obtenerShakes(new ResultListener<List<Tema>>() {
+        controllerShakes.obtenerHistorial(new ResultListener<List<Tema>>() {
             @Override
             public void finish(List<Tema> temaList) {
                 listaDeTemas.addAll(temaList);

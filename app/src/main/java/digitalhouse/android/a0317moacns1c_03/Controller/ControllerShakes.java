@@ -30,8 +30,8 @@ public class ControllerShakes {
     }
 
     public void agregarTemaShake (Tema tema){
-        DAOShakeHistorialDB daoShakeHistorialDB = new DAOShakeHistorialDB(context);
-        daoShakeHistorialDB.addTema(tema);
+        DAOShakesDB daoShakesDB = new DAOShakesDB(context);
+        daoShakesDB.addShaKe(tema);
     }
 
 
