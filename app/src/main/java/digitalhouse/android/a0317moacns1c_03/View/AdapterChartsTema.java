@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -41,7 +42,10 @@ public class AdapterChartsTema extends RecyclerView.Adapter {
         final Tema unTema = temaList.get(position);
         ChartTemaViewHolder chartTemaViewHolder = (ChartTemaViewHolder) holder;
         TextView textViewChartTema = chartTemaViewHolder.textViewDetalleCeldaChartTema;
+        ImageView imageViewChartTema = chartTemaViewHolder.imageViewDetalleCeldaChartTema;
         textViewChartTema.setText(unTema.getName());
+
+        imageViewChartTema.setImageResource(R.drawable.notamusicalvermelhahi);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,10 +62,13 @@ public class AdapterChartsTema extends RecyclerView.Adapter {
 
     private class ChartTemaViewHolder extends RecyclerView.ViewHolder{
         TextView textViewDetalleCeldaChartTema;
+        ImageView imageViewDetalleCeldaChartTema;
+
 
         public ChartTemaViewHolder(View itemView) {
             super(itemView);
             textViewDetalleCeldaChartTema = (TextView) itemView.findViewById(R.id.textViewTitle);
+            imageViewDetalleCeldaChartTema = (ImageView) itemView.findViewById(R.id.imageViewCover);
 
         }
     }
