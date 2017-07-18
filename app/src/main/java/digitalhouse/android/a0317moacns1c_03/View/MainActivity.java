@@ -2,6 +2,7 @@ package digitalhouse.android.a0317moacns1c_03.View;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
@@ -39,12 +40,15 @@ public class MainActivity extends AppCompatActivity implements FragmentPrincipal
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-        Intent intent = new Intent(MainActivity.this,OnBoardingActivity.class);
-        startActivity(intent);
-
-
+        //metodo de Edu Gato
+        // Get the shared preferences
+        SharedPreferences preferences =  getSharedPreferences("my_preferences", MODE_PRIVATE);
+        if(!preferences.getBoolean("onboarding_complete",false)) {
+            Intent intent = new Intent(MainActivity.this,OnBoardingActivity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
 
         // ShakeDetector initialization
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);

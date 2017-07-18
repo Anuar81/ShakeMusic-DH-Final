@@ -85,7 +85,7 @@ public class FragmentDetalleArtista extends Fragment implements AdapterArtistaTe
                 Picasso.with(getContext()).load(artista.getPictureMedium()).into(imageViewArtista);
                 artistaEncontrado = artista;
                         String id = artista.getId();
-                controllerArtista.obtenerPlayListArtista(new ResultListener<List<Tema>>() {
+                controllerArtista.traerTemasDeArtista(new ResultListener<List<Tema>>() {
                     @Override
                     public void finish(List<Tema> temaList) {
                         recyclerDetalleAlbum.setHasFixedSize(true);

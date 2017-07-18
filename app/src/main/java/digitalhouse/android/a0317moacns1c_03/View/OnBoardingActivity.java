@@ -1,6 +1,8 @@
 package digitalhouse.android.a0317moacns1c_03.View;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.support.v4.view.ViewPager;
@@ -46,6 +48,19 @@ public class OnBoardingActivity extends AppCompatActivity {
              //   Toast.makeText(OnBoardingActivity.this, "SE SHEIKEO" + count, Toast.LENGTH_SHORT).show();
                // handleShakeEvent(count);
                 if (viewPager.getCurrentItem()== 3){
+                    // Get the shared preferences
+                    SharedPreferences preferences =
+                            getSharedPreferences("my_preferences", MODE_PRIVATE);
+
+                    // Set onboarding_complete to true
+                    preferences.edit()
+                            .putBoolean("onboarding_complete",true).apply();
+
+                    // Launch the main Activity, called MainActivity
+                    Intent main = new Intent(OnBoardingActivity.this, MainActivity.class);
+                    startActivity(main);
+
+                    // Close the OnboardingActivity
                     finish();
                 }
 
@@ -61,7 +76,9 @@ public class OnBoardingActivity extends AppCompatActivity {
     }
 
     private void handleShakeEvent(int count) {
-        Toast.makeText(this, "SE SHEIKEO" + count, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "SE SHEIKEO" + count, Toast.LENGTH_SHORT).show();
 
     }
+
+
 }

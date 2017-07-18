@@ -47,6 +47,7 @@ public class DetalleArtistaActivity extends AppCompatActivity implements Fragmen
         bundle.putString(PlayCancionFragment.RUTA_FOTO_ARTISTA_CANCION,artista.getPictureMedium());
         bundle.putString(PlayCancionFragment.NOMBRE_CANCION,tema.getName());
         bundle.putString(PlayCancionFragment.RUTA_PREVIEW_CANCION, tema.getPreview());
+        bundle.putString(PlayCancionFragment.ID_ARTISTA, artista.getId());
         intent.putExtras(bundle);
         startActivity(intent);
     }
