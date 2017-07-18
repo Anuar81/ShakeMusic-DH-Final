@@ -16,9 +16,12 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.util.List;
 
+import digitalhouse.android.a0317moacns1c_03.Controller.ControllerAlbum;
 import digitalhouse.android.a0317moacns1c_03.Controller.ControllerShakes;
 import digitalhouse.android.a0317moacns1c_03.Controller.ControllerTema;
+import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Album;
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Tema;
 import digitalhouse.android.a0317moacns1c_03.R;
 import digitalhouse.android.a0317moacns1c_03.utils.ResultListener;
@@ -30,8 +33,11 @@ public class PlayCancionFragment extends Fragment {
 
     public static final String ID_TEMA = "id_tema";
     public static final String NOMBRE_CANCION = "nombreCancion";
-    public static final String RUTA_FOTO_ARTISTA_CANCION = "rutaFoto";
-    public static final String RUTA_PREVIEW_CANCION = "rutaPreview";
+    public static final String RUTA_FOTO_ARTISTA_CANCION = "Chartok deja de morfar!!!";
+    public static final String RUTA_PREVIEW_CANCION = "Entrega a la profe de Marketing - Venezolano feo!!!";
+    public static final String ID_ALBUM = "Edu Gato";
+    public static final String ID_ARTISTA = "Aguante Maduro - Edu boton";
+
     private Tema temaElegido = new Tema();
     private ControllerShakes controllerShakes;
 
@@ -40,6 +46,25 @@ public class PlayCancionFragment extends Fragment {
         // Required empty public constructor
     }
 
+    private Button btnPlay;
+    private MediaPlayer player;
+    private List<Tema> listaTemas;
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (player.isPlaying()){
+            player.stop();
+            btnPlay.setText("Play");
+        }
+
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        player.stop();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,10 +76,24 @@ public class PlayCancionFragment extends Fragment {
         String fotoArtistaCancion = bundle.getString(RUTA_FOTO_ARTISTA_CANCION);
         String nombreCancion = bundle.getString(NOMBRE_CANCION);
         final String preview = bundle.getString(RUTA_PREVIEW_CANCION);
+        String idAlbum = bundle.getString(ID_ALBUM);
+        String idArtista = bundle.getString(ID_ARTISTA);
+
+        //llamo e intento traer la lista de temas del album
+        ControllerAlbum controllerAlbum = new ControllerAlbum(getContext());
+        controllerAlbum.obtenerAlbum(new ResultListener<Album>() {
+            @Override
+            public void finish(Album album) {
+                listaTemas = album.getContainerAlbumTema().getTemaList();
+            }
+        }, idAlbum);
+
+
+
 
         ImageView fotoArtista = (ImageView)view.findViewById(R.id.imageViewFotoCancionSeleccionada);
         TextView nombreCanciontv = (TextView)view.findViewById(R.id.textViewTituloCancionSeleccionada);
-        final Button btnPlay = (Button)view.findViewById(R.id.btnPlayCancionSeleccionada);
+        btnPlay = (Button)view.findViewById(R.id.btnPlayCancionSeleccionada);
         final Button btnMisShakesAdd = (Button)view.findViewById(R.id.btnMisShakesAdd);
         controllerShakes = new ControllerShakes(getActivity());
 
@@ -78,7 +117,7 @@ public class PlayCancionFragment extends Fragment {
 
 
         //code para que suene modificado de PLM
-        final MediaPlayer player = new MediaPlayer();
+        player = new MediaPlayer();
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
         btnPlay.setOnClickListener(new View.OnClickListener() {
@@ -127,5 +166,7 @@ public class PlayCancionFragment extends Fragment {
 
         return view;
     }
+
+
 
 }
