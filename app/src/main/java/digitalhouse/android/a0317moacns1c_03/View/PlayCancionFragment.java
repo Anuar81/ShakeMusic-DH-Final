@@ -153,7 +153,8 @@ public class PlayCancionFragment extends Fragment {
 
         //me fijo si no viene vacio
         if(fotoArtistaCancion != null){
-            Picasso.with(getActivity()).load(fotoArtistaCancion).into(fotoArtista);}
+            Picasso.with(getActivity()).load(fotoArtistaCancion).error(R.drawable.ic_launcher_round3).into(fotoArtista);
+        }
 
 
         nombreCanciontv.setText(nombreCancion);
