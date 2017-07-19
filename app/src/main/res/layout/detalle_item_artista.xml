@@ -27,14 +27,7 @@
             android:textSize="22sp"
             />
 
-        <TextView
-            android:id="@+id/descriptionTemaArtista"
-            android:layout_marginTop="4dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:text="Descripcion"
-            />
+
 
 
     </LinearLayout>
