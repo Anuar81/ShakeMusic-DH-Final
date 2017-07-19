@@ -17,14 +17,11 @@
         android:layout_margin="16dp"
         >
 
-
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textViewTitleTemaAlbum"
             android:text="Prueba"
-            android:textColor="@android:color/holo_green_light"
             android:textSize="22sp"
             />
 

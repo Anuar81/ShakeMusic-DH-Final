@@ -24,7 +24,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/textViewTitleTemaArtista"
             android:text="Prueba"
-            android:textColor="@android:color/holo_green_light"
             android:textSize="22sp"
             />
 
