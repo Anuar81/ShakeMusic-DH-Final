@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -31,15 +32,15 @@ public class MainActivity extends AppCompatActivity implements FragmentPrincipal
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
     private String idAlbumABuscar;
-
-
+    private NavigationView navigationView;
+    private DrawerLayout drawerLayout;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        drawerLayout = (DrawerLayout) findViewById(R.id.activity_main);
         //metodo de Edu Gato
         // Get the shared preferences
         SharedPreferences preferences =  getSharedPreferences("my_preferences", MODE_PRIVATE);
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements FragmentPrincipal
 
         cargarFragmentPrincipal();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigationView);
+        navigationView = (NavigationView) findViewById(R.id.navigationView);
 
 
         NavigationViewListener navigationViewListener = new NavigationViewListener();
@@ -175,6 +176,8 @@ public class MainActivity extends AppCompatActivity implements FragmentPrincipal
                 fragmentTransaction.addToBackStack(null);
 
                 fragmentTransaction.commit();
+
+                drawerLayout.closeDrawers();
 
 
             }

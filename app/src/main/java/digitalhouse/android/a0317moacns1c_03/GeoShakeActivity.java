@@ -44,6 +44,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import digitalhouse.android.a0317moacns1c_03.Controller.ControllerShakes;
+import digitalhouse.android.a0317moacns1c_03.Model.Pojo.GeoShake;
+import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Tema;
+import digitalhouse.android.a0317moacns1c_03.View.AdapterChartsTema;
+import digitalhouse.android.a0317moacns1c_03.utils.ResultListener;
+
 
 public class GeoShakeActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, GoogleMap.OnMarkerClickListener, com.google.android.gms.location.LocationListener {
 
@@ -54,7 +60,9 @@ public class GeoShakeActivity extends FragmentActivity implements OnMapReadyCall
     private LocationRequest mLocationRequest;
     private boolean mLocationUpdateState;
     private static final int REQUEST_CHECK_SETTINGS = 2;
-
+    private List<Tema> listaDeTemas = new ArrayList<>();
+    private List<GeoShake>geoShakeList;
+    private List<GeoShake>geoShakeListTemp = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +82,9 @@ public class GeoShakeActivity extends FragmentActivity implements OnMapReadyCall
         }
 
         createLocationRequest();
+        buscarHistorial();
+       leerLatLog();
+
 
     }
 
@@ -83,32 +94,6 @@ public class GeoShakeActivity extends FragmentActivity implements OnMapReadyCall
 
         mGoogleApiClient.connect();
 
-        //lee todos los que grabaron en la base de datos y los dibuja
-
-/*    public void leerComplejo(View view){
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = database.getReference();
-
-        databaseReference.child("Geo").child("userid").setValue().addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                List<Geo> geoList = new ArrayList<Geo>();
-
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                    geoList.add(snapshot.getValue(Geo.class));
-                }
-
-                Toast.makeText(HomeActivity.this, tweetList.get(1).getNombre(), Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(HomeActivity.this, "Fallo", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-    }*/
 
 
 
@@ -150,8 +135,13 @@ public class GeoShakeActivity extends FragmentActivity implements OnMapReadyCall
 
         LocationAvailability locationAvailability =
                 LocationServices.FusedLocationApi.getLocationAvailability(mGoogleApiClient);
+
+
         if (null != locationAvailability && locationAvailability.isLocationAvailable()) {
             mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+
+            //guarda en la base de datos la última Lat/Long de cada usuario (id random) con la canción
+            escribirComplejo();
 
             if (mLastLocation != null) {
                 LatLng currentLocation = new LatLng(mLastLocation.getLatitude(), mLastLocation
@@ -159,23 +149,44 @@ public class GeoShakeActivity extends FragmentActivity implements OnMapReadyCall
                 placeMarkerOnMap(currentLocation);
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 12));
 
-                //guarda en la base de datos la última Lat/Long de cada usuario (id random) con la canción
-
-/*                public void escribirComplejo(View view){
-
-                    Tweet tweet = new Tweet();
-                    tweet.setNombre("Edu");
-                    tweet.setApellido("Parra");
-                    tweet.setLastTweet("soy un pobre programador.");
-
-
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    DatabaseReference databaseReference = database.getReference();
-                    databaseReference.child("twitters").push().setValue(tweet);
-                }*/
 
             }
         }
+    }
+
+
+    private void escribirComplejo() {
+
+        Tema tema = listaDeTemas.get(listaDeTemas.size() - 1);
+
+        if (tema != null) {
+
+            GeoShake geoShake = new GeoShake();
+            geoShake.setNombreCancion(tema.getName());
+            geoShake.setLatitud(mLastLocation.getLatitude());
+            geoShake.setLongitud(mLastLocation.getLongitude());
+
+
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference databaseReference = database.getReference();
+            databaseReference.child("Geo").push().setValue(geoShake);
+
+
+        }
+
+
+    }
+
+    private void buscarHistorial() {
+        ControllerShakes controllerShakes = new ControllerShakes(GeoShakeActivity.this);
+        controllerShakes.obtenerShakes(new ResultListener<List<Tema>>() {
+            @Override
+            public void finish(List<Tema> temaList) {
+                listaDeTemas.addAll(temaList);
+
+            }
+        });
+
     }
 
 
@@ -292,11 +303,46 @@ public class GeoShakeActivity extends FragmentActivity implements OnMapReadyCall
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.setOnMarkerClickListener(this);
 
+
+
         // Add a marker and move the camera
-        LatLng dh = new LatLng(-34.6211321, -58.3816387);
-        mMap.addMarker(new MarkerOptions().position(dh).title("Aquí Shakers")); //marcador de prueba en Digital
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(dh)); //Centrar
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(dh, 12));  //Zoom del marcador
+
+    }
+
+    private void leerLatLog(){
+
+        //lee todos los que grabaron en la base de datos y los dibuja
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = database.getReference();
+
+        databaseReference.child("Geo").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    geoShakeListTemp.add(snapshot.getValue(GeoShake.class));
+                }
+
+
+                for (GeoShake geoShake:geoShakeListTemp
+                        ) {
+                    String usr = geoShake.getNombreCancion();
+                    LatLng mark = new LatLng(geoShake.getLatitud(), geoShake.getLongitud());
+                    mMap.addMarker(new MarkerOptions().position(mark).title(usr)); //marcador de prueba en Digital
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(mark)); //Centrar
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mark, 12));  //Zoom del marcador
+                }
+                //Toast.makeText(HomeActivity.this, tweetList.get(1).getNombre(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                //Toast.makeText(HomeActivity.this, "Fallo", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+       // return geoShakeListTemp;
     }
 
     @Override

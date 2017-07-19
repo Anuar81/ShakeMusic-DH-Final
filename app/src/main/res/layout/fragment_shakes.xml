@@ -5,7 +5,7 @@
     tools:context="digitalhouse.android.a0317moacns1c_03.FragmentShakes">
 
     <android.support.v7.widget.RecyclerView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/recyclerShakes"
         ></android.support.v7.widget.RecyclerView>
