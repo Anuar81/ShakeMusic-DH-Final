@@ -7,9 +7,10 @@
 
     <!-- TODO: Update blank fragment layout -->
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:id="@+id/imageViewFotoCancionSeleccionada"
+        android:src="@drawable/ic_launcher_round3"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"/>
 

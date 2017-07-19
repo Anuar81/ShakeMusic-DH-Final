@@ -45,7 +45,7 @@ public class AdapterChartsTema extends RecyclerView.Adapter {
         ImageView imageViewChartTema = chartTemaViewHolder.imageViewDetalleCeldaChartTema;
         textViewChartTema.setText(unTema.getName());
 
-        imageViewChartTema.setImageResource(R.drawable.notamusicalvermelhahi);
+        imageViewChartTema.setImageResource(R.drawable.ic_launcher_round3);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

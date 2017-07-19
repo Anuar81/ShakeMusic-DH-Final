@@ -109,7 +109,7 @@ public class GeoShakeActivity extends FragmentActivity implements OnMapReadyCall
     }
 
 
-    protected void placeMarkerOnMap(LatLng location) {
+    protected MarkerOptions placeMarkerOnMap(LatLng location) {
 
         MarkerOptions markerOptions = new MarkerOptions().position(location);
         markerOptions.icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource
@@ -120,6 +120,8 @@ public class GeoShakeActivity extends FragmentActivity implements OnMapReadyCall
 
 
         mMap.addMarker(markerOptions);
+
+        return markerOptions;
     }
 
 
@@ -327,9 +329,12 @@ public class GeoShakeActivity extends FragmentActivity implements OnMapReadyCall
 
                 for (GeoShake geoShake:geoShakeListTemp
                         ) {
+
+
                     String usr = geoShake.getNombreCancion();
                     LatLng mark = new LatLng(geoShake.getLatitud(), geoShake.getLongitud());
-                    mMap.addMarker(new MarkerOptions().position(mark).title(usr)); //marcador de prueba en Digital
+                    MarkerOptions markerOptions =  placeMarkerOnMap(mark);
+                    mMap.addMarker(markerOptions.position(mark).title(usr)); //marcador de prueba en Digital
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(mark)); //Centrar
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mark, 12));  //Zoom del marcador
                 }
