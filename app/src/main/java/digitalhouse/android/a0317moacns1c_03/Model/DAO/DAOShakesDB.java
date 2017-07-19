@@ -25,7 +25,9 @@ public class DAOShakesDB extends DatabaseHelper {
     public static final String PREVIEW = "preview";
     public static final String TABLE_SHAKES = "shakes";
 
-    public DAOShakesDB (Context context) {super (context);}
+    public DAOShakesDB (Context context) {
+        super (context);
+    }
 
     public void addShaKe (Tema tema){
 

@@ -20,11 +20,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String query = "CREATE TABLE " + DAOShakeHistorialDB.TABLE_HISTORY + "(" +
+        String query = "CREATE TABLE " + DAOShakeHistorialDB.TABLE_HISTORY + " (" +
                 DAOShakeHistorialDB.ID + " INTEGER PRIMARY KEY," +
                 DAOShakeHistorialDB.NAME + " TEXT NOT NULL," +
                 DAOShakeHistorialDB.LINK + " TEXT," +
-                DAOShakeHistorialDB.DURATION + "TEXT," +
+                DAOShakeHistorialDB.DURATION + " TEXT," +
                 DAOShakeHistorialDB.TRACK_POSITION + " TEXT," +
                 DAOShakeHistorialDB.DISK_NUMBER + " TEXT," +
                 DAOShakeHistorialDB.PREVIEW + " TEXT)" ;
