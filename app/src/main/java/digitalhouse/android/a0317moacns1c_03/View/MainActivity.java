@@ -25,7 +25,7 @@ import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Tema;
 import digitalhouse.android.a0317moacns1c_03.R;
 import digitalhouse.android.a0317moacns1c_03.utils.ShakeDetector;
 
-public class MainActivity extends AppCompatActivity implements FragmentPrincipal.InformarClickFragment {
+public class MainActivity extends AppCompatActivity implements FragmentPrincipal.InformarClickFragment, FragmentShakes.InformarClickFragment {
 
     // The following are used for the shake detection
     private SensorManager mSensorManager;
