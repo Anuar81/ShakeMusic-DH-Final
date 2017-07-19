@@ -1,6 +1,7 @@
 package digitalhouse.android.a0317moacns1c_03;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,7 +27,7 @@ public class FragmentHistorial extends Fragment implements AdapterChartsTema.Inf
     private RecyclerView recyclerViewHistorial;
     private List<Tema> listaDeTemas;
     private AdapterChartsTema adapterDeHistorial;
-
+    private InformarClickFragment escuchadorDelFragment;
 
     public FragmentHistorial() {
         // Required empty public constructor
@@ -51,6 +52,13 @@ public class FragmentHistorial extends Fragment implements AdapterChartsTema.Inf
 
         return view;
     }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        escuchadorDelFragment = (InformarClickFragment)context;
+    }
+
     private void cargarRecyclerHistorial (){
         ControllerShakes controllerShakes = new ControllerShakes(getContext());
         controllerShakes.obtenerHistorial(new ResultListener<List<Tema>>() {
@@ -64,6 +72,13 @@ public class FragmentHistorial extends Fragment implements AdapterChartsTema.Inf
 
     @Override
     public void informarClickTema(Tema tema) {
+        escuchadorDelFragment.informarClickenFragment(tema);
+    }
+
+
+
+    public interface InformarClickFragment{
+        public void informarClickenFragment(Tema tema);
 
     }
 }
