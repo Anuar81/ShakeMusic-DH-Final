@@ -42,7 +42,7 @@ public class FragmentHistorial extends Fragment implements AdapterChartsTema.Inf
 
         View view = inflater.inflate(R.layout.fragment_historial, container, false);
         recyclerViewHistorial= (RecyclerView)view.findViewById(R.id.recyclerHistorial);
-        recyclerViewHistorial.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
+        recyclerViewHistorial.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false));
         adapterDeHistorial = new AdapterChartsTema(getActivity(),listaDeTemas,FragmentHistorial.this);
         recyclerViewHistorial.setAdapter(adapterDeHistorial);
         Bundle unBundle = getArguments();
