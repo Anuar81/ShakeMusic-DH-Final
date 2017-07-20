@@ -2,6 +2,7 @@ package digitalhouse.android.a0317moacns1c_03.View;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.media.AudioManager;
@@ -153,6 +154,7 @@ public class PlayCancionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 controllerShakes.agregarTemaShake(temaElegido);
+                abriLogin();
             }
         });
 
@@ -172,6 +174,7 @@ public class PlayCancionFragment extends Fragment {
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                btnPlay.setImageResource(R.drawable.pause);
                 escucharTema(preview);
             }
         });
@@ -212,11 +215,17 @@ public class PlayCancionFragment extends Fragment {
         setSharedElementEnterTransition(changeBounds);
     }
 
+    private void abriLogin(){
+        Intent intent = new Intent(getContext(),LoginActivity.class);
+        startActivity(intent);
+    }
+
     private void escucharTema(String preview){
         if (player.isPlaying()){
             player.stop();
             player.reset();//agregado para que resetee el tema y se pueda escuchar con shakes
             //btnPlay.setText("Play");
+            btnPlay.setImageResource(R.drawable.playicon);
             play=false;
         }else{
             try {
