@@ -15,6 +15,7 @@ import android.support.v4.view.ViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Button;
@@ -47,7 +48,7 @@ public class PlayCancionFragment extends Fragment {
     public static final String RUTA_PREVIEW_CANCION = "Entrega a la profe de Marketing - Venezolano feo!!!";
     public static final String ID_ALBUM = "Edu Gato";
     public static final String ID_ARTISTA = "Aguante Maduro - Edu boton";
-
+    private Boolean play = false;
     private Tema temaElegido = new Tema();
 
     //cosas para usar con el shake
@@ -63,7 +64,7 @@ public class PlayCancionFragment extends Fragment {
         // Required empty public constructor
     }
 
-    private Button btnPlay;
+    private ImageButton btnPlay;
     private MediaPlayer player;
     private List<Tema> listaTemas;
 
@@ -72,7 +73,8 @@ public class PlayCancionFragment extends Fragment {
         super.onStart();
         if (player.isPlaying()){
             player.stop();
-            btnPlay.setText("Play");
+            play = false;
+            //btnPlay.setText("Play");
         }
 
     }
@@ -133,8 +135,8 @@ public class PlayCancionFragment extends Fragment {
         //busco todas las basofias del XML
         ImageView fotoArtista = (ImageView)view.findViewById(R.id.imageViewFotoCancionSeleccionada);
         nombreCanciontv = (TextView)view.findViewById(R.id.textViewTituloCancionSeleccionada);
-        btnPlay = (Button)view.findViewById(R.id.btnPlayCancionSeleccionada);
-        Button btnMisShakesAdd = (Button)view.findViewById(R.id.btnMisShakesAdd);
+        btnPlay = (ImageButton)view.findViewById(R.id.btnPlayCancionSeleccionada);
+        ImageButton btnMisShakesAdd = (ImageButton)view.findViewById(R.id.btnMisShakesAdd);
         controllerShakes = new ControllerShakes(getActivity());
 
         //Traemos el tema entero con el id
@@ -214,7 +216,8 @@ public class PlayCancionFragment extends Fragment {
         if (player.isPlaying()){
             player.stop();
             player.reset();//agregado para que resetee el tema y se pueda escuchar con shakes
-            btnPlay.setText("Play");
+            //btnPlay.setText("Play");
+            play=false;
         }else{
             try {
                 player.setDataSource(preview);
@@ -235,9 +238,10 @@ public class PlayCancionFragment extends Fragment {
                 Toast.makeText(getContext(), "5", Toast.LENGTH_LONG).show();
             }
             player.start();
-            btnPlay.setText("Stop");
+           // btnPlay.setText("Stop");
             //agrego el tema escuchado al historial
             controllerShakes.agregarTemaAlHistorial(temaElegido);
+            play = true;
 
         }
     }
@@ -249,8 +253,9 @@ public class PlayCancionFragment extends Fragment {
             Tema tema = listaTemas.get(numRandom);
             nombreCanciontv.setText(tema.getName());
             //no mirar, codigo feo, fuiraaaaaaaaa...
-            if (btnPlay.getText().equals("Stop")){
+            if (play.equals(true)){
                 escucharTema(tema.getPreview());
+                play = false;
             }
             //u lala esto si se puede ver...
             escucharTema(tema.getPreview());
