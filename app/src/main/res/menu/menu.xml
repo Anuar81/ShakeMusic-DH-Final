@@ -20,4 +20,17 @@
         android:title="HISTORIAL">
 
     </item>
+
+    <item
+        android:id="@+id/aboutus"
+        android:title="ABOUT US">
+
+    </item>
+
+
+
+
+
+
+
 </menu>

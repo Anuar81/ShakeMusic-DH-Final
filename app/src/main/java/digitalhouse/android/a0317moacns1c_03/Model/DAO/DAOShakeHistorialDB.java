@@ -38,7 +38,7 @@ public class DAOShakeHistorialDB extends DatabaseHelper {
             row.put(ID, tema.getId());
             row.put(NAME, tema.getName());
             row.put(LINK, tema.getLink());
-            row.put(DURATION, tema.getDuration());
+            row.put(DURATION, String.valueOf(tema.getDuration()));
             row.put(TRACK_POSITION, tema.getTrackPosition());
             row.put(DISK_NUMBER, tema.getDiskNumber());
             row.put(PREVIEW, tema.getPreview());
