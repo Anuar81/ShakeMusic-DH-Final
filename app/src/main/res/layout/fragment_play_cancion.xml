@@ -22,21 +22,25 @@
         android:layout_gravity="center_horizontal"
         android:layout_margin="5dp"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Play"
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/playicon"
         android:id="@+id/btnPlayCancionSeleccionada"
+        android:scaleType="fitXY"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="5dp"/>
+        android:layout_margin="5dp"
+        android:background="@null"
+        />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="+"
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/add"
         android:id="@+id/btnMisShakesAdd"
-        android:textSize="15sp"
+        android:scaleType="fitXY"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="5dp"/>
+        android:layout_margin="5dp"
+        android:background="@null"/>
 
 </LinearLayout>
