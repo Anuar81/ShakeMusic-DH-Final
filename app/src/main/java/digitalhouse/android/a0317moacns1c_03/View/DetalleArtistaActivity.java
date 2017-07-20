@@ -1,10 +1,16 @@
 package digitalhouse.android.a0317moacns1c_03.View;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Pair;
+import android.view.View;
 
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Album;
 import digitalhouse.android.a0317moacns1c_03.Model.Pojo.Artista;
@@ -39,8 +45,9 @@ public class DetalleArtistaActivity extends AppCompatActivity implements Fragmen
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    public void informarClickenFragmentDetalleArtistaTema(Tema tema, Artista artista) {
+    public void informarClickenFragmentDetalleArtistaTema(Tema tema, Artista artista, View imageView) {
         Intent intent = new Intent(DetalleArtistaActivity.this,DetalleTemaActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString(PlayCancionFragment.ID_TEMA,String.valueOf(tema.getId()));
@@ -48,7 +55,11 @@ public class DetalleArtistaActivity extends AppCompatActivity implements Fragmen
         bundle.putString(PlayCancionFragment.NOMBRE_CANCION,tema.getName());
         bundle.putString(PlayCancionFragment.RUTA_PREVIEW_CANCION, tema.getPreview());
         bundle.putString(PlayCancionFragment.ID_ARTISTA, artista.getId());
+
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(DetalleArtistaActivity.this,
+                Pair.create(imageView, ViewCompat.getTransitionName(imageView)));
+
         intent.putExtras(bundle);
-        startActivity(intent);
+        startActivity(intent, options.toBundle());
     }
 }

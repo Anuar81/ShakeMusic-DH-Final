@@ -118,10 +118,10 @@ public class FragmentDetalleArtista extends Fragment implements AdapterArtistaTe
 
     @Override
     public void informarClickenFragmentDetalleArtistaTema(Tema tema) {
-        escuchadorDelFragmentDetalleArtistaTema.informarClickenFragmentDetalleArtistaTema(tema, artistaEncontrado);
+        escuchadorDelFragmentDetalleArtistaTema.informarClickenFragmentDetalleArtistaTema(tema, artistaEncontrado, imageViewArtista);
     }
 
     public interface InformarClickFragmentDetalleArtistaTema {
-        public void informarClickenFragmentDetalleArtistaTema(Tema tema, Artista artista);
+        public void informarClickenFragmentDetalleArtistaTema(Tema tema, Artista artista,View imagaView);
     }
 }
