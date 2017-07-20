@@ -210,6 +210,13 @@ public class MainActivity extends AppCompatActivity implements FragmentPrincipal
 
             }
 
+            if (item.getItemId() == R.id.aboutus) {
+               Intent intent =new Intent(MainActivity.this,AboutUsActivity.class);
+                startActivity(intent);
+
+
+            }
+
             return true;
         }
     }
