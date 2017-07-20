@@ -113,11 +113,11 @@ public class FragmentDetalleAlbum extends Fragment implements AdapterAlbumTemas.
 
     @Override
     public void informarClickenFragmentDetalleAlbumTema(Tema tema) {
-        escuchadorDelFragmentDetalleAlbumTema.informarClickenFragmentDetalleAlbumTema(tema, albumEncontrado);
+        escuchadorDelFragmentDetalleAlbumTema.informarClickenFragmentDetalleAlbumTema(tema, albumEncontrado,imageViewAlbum);
     }
 
     public interface InformarClickFragmentDetalleAlbumTema{
-        public void informarClickenFragmentDetalleAlbumTema(Tema tema, Album album);
+        public void informarClickenFragmentDetalleAlbumTema(Tema tema, Album album, View imageView);
     }
 
 

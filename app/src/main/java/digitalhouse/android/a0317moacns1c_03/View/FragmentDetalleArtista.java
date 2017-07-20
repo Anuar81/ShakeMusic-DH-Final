@@ -69,7 +69,7 @@ public class FragmentDetalleArtista extends Fragment implements AdapterArtistaTe
         Bundle unBundle = getArguments();
         idArtistaABuscar = unBundle.getString(ID_ARTISTA_A_BUSCAR);
         imageViewArtista = (ImageView) view.findViewById(R.id.imageViewDetalleArtista);
-
+        final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) view.findViewById(R.id.collapsingToolBar);
 
 
         //SOLICITO LA LISTA DE TEMAS AL CONTROLLER DEL DETALLE ALBUM
@@ -95,7 +95,7 @@ public class FragmentDetalleArtista extends Fragment implements AdapterArtistaTe
 
                     }
                 },idArtistaABuscar);
-
+                collapsingToolbarLayout.setTitle(artistaEncontrado.getName());
 
 
 
@@ -105,8 +105,8 @@ public class FragmentDetalleArtista extends Fragment implements AdapterArtistaTe
         Toolbar toolbarDetalleArtista = (Toolbar) view.findViewById(R.id.toolbarDetalleArtista);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbarDetalleArtista);
 
-        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) view.findViewById(R.id.collapsingToolBar);
-        collapsingToolbarLayout.setTitle("ARTISTA");
+
+
         collapsingToolbarLayout.setContentScrimResource(R.color.colorPrimary);
         collapsingToolbarLayout.setStatusBarScrimResource(R.color.colorAccent);
         collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.TextAppearance_MyApp_Title_Collapsed);
