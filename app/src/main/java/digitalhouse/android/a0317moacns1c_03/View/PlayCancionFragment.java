@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -67,7 +68,7 @@ public class PlayCancionFragment extends Fragment {
 
     private ImageButton btnPlay;
     private MediaPlayer player;
-    private List<Tema> listaTemas;
+    private List<Tema> listaTemas= new ArrayList<>();
 
     @Override
     public void onStart() {
@@ -268,6 +269,9 @@ public class PlayCancionFragment extends Fragment {
             }
             //u lala esto si se puede ver...
             escucharTema(tema.getPreview());
+        }
+        else {
+            escucharTema(preview);
         }
     }
 
