@@ -7,7 +7,11 @@ import android.hardware.SensorManager;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.transition.ChangeBounds;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -197,6 +201,16 @@ public class PlayCancionFragment extends Fragment {
 
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ChangeBounds changeBounds = new ChangeBounds();
+        changeBounds.setDuration(400);
+
+        setSharedElementReturnTransition(changeBounds);
+        setSharedElementEnterTransition(changeBounds);
     }
 
     private void escucharTema(String preview){
