@@ -21,13 +21,14 @@
             app:expandedTitleGravity="bottom|center_horizontal"
             app:expandedTitleMarginBottom="32dp"
             app:expandedTitleMarginEnd="64dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             app:collapsedTitleTextAppearance="@style/TextAppearance.MyApp.Title.Collapsed"
             app:expandedTitleTextAppearance="@style/TextAppearance.MyApp.Title.Expanded"
             >
 
             <ImageView
                 android:id="@+id/imageViewDetalleAlbum"
+                android:transitionName="@string/transition_play_image"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:fitsSystemWindows="true"

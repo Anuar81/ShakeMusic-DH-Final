@@ -10,6 +10,7 @@
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:id="@+id/imageViewFotoCancionSeleccionada"
+        android:transitionName="@string/transition_play_image"
         android:src="@drawable/ic_launcher_round3"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"/>
