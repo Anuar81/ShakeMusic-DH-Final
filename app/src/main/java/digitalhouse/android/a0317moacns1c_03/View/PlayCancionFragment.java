@@ -168,6 +168,7 @@ public class PlayCancionFragment extends Fragment {
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                btnPlay.setImageResource(R.drawable.pause);
                 escucharTema(preview);
             }
         });
@@ -203,6 +204,7 @@ public class PlayCancionFragment extends Fragment {
             player.stop();
             player.reset();//agregado para que resetee el tema y se pueda escuchar con shakes
             //btnPlay.setText("Play");
+            btnPlay.setImageResource(R.drawable.playicon);
             play=false;
         }else{
             try {
