@@ -2,6 +2,7 @@ package digitalhouse.android.a0317moacns1c_03.View;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.media.AudioManager;
@@ -149,6 +150,7 @@ public class PlayCancionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 controllerShakes.agregarTemaShake(temaElegido);
+                abriLogin();
             }
         });
 
@@ -196,6 +198,11 @@ public class PlayCancionFragment extends Fragment {
 
 
         return view;
+    }
+
+    private void abriLogin(){
+        Intent intent = new Intent(getContext(),LoginActivity.class);
+        startActivity(intent);
     }
 
     private void escucharTema(String preview){
